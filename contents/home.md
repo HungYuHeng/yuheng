@@ -16,5 +16,5 @@ M.S., Computer Science, National Yang Ming Chiao Tung University, 2019—2021.\
 B.S., Computer Science, National Tsing Hua University, 2014—2018.
 
 #### Research Interests
-Reinforcement Learning, Bayesian Optimization, Bandit Learning, Meta Learning, non-Markovian RL.
+Reinforcement Learning, Bayesian Optimization, Bandit Learning, Meta Learning.
 
