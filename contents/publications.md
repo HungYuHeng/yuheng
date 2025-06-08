@@ -1,6 +1,6 @@
 ### Conference Papers
-
-- Kuang-Da Wang, Teng-Ruei Chen, **Yu Heng Hung**, Shuoyang Ding, Yueh-Hua Wu, Yi-Chiang Frank Wang, Chao-Han Huck Yang, Wen-Chih Peng, Ping-Chun Hsieh, "Plan2Align: Predictive Planning Based Test-Time Preference Alignment in Paragraph-Level Machine Translation".
+- **Yu Heng Hung**, Kai Wang, Ping-Chun Hsieh, "Non-Stationary Restless Multi-Armed Bandits with Provable Guarantee".
+- Kuang-Da Wang, Teng-Ruei Chen, **Yu Heng Hung**, Shuoyang Ding, Yueh-Hua Wu, Yi-Chiang Frank Wang, Chao-Han Huck Yang, Wen-Chih Peng, Ping-Chun Hsieh, "Plan2Align: Predictive Planning Based Test-Time Preference Alignment for Large Language Models".
 - **Yu-Heng Hung**, Ping-Chun Hsieh, Akshay Mete, and P. R. Kumar, "Value-Biased Maximum Likelihood Estimation for Model-based Reinforcement Learning in Discounted Linear MDPs".
 - **Yu-Heng Hung** and Ping-Chun Hsieh, "Efficient Exploration via Reward-Biased Maximum Likelihood Estimation in Linear Contextual Bandits".
 
