@@ -1,8 +1,6 @@
-
-
 [![HungYuHeng](https://img.shields.io/badge/HungYuHeng-github-blue?logo=github)](https://github.com/HungYuHeng)
 
-I am currently a Ph.D. student in Computer Science at National Yang-Ming Chiao Tung University (NYCU), supervised by Professor Ping-Chun Hsieh. My research focuses on reinforcement learning, Bayesian optimization, and bandit learning. I am also a visiting scholar at Georgia Tech, advised by Professor Kai Wang. Before joining NYCU, I received my B.S. in Computer Science from National Tsing Hua University (NTHU) in 2018.
+I am currently a Ph.D. student in Computer Science at National Yang-Ming Chiao Tung University (NYCU), supervised by Professor [Ping-Chun Hsieh](https://pinghsieh.github.io/). My research focuses on reinforcement learning, Bayesian optimization, and bandit learning. I am also a visiting scholar at Georgia Tech, advised by Professor [Kai Wang](https://guaguakai.com/). Before joining NYCU, I received my B.S. in Computer Science from National Tsing Hua University (NTHU) in 2018.
 
 #### Email
 hungyh.cs08@nycu.edu.tw
