@@ -8,10 +8,15 @@ hungyh.cs08@nycu.edu.tw
 #### Mobile
 +886953997301
 
+
+
 #### Education
-Ph.D., Computer Science, National Yang Ming Chiao Tung University, 2021—Present.\
-M.S., Computer Science, National Yang Ming Chiao Tung University, 2019—2021.\
+Ph.D., Computer Science, National Yang Ming Chiao Tung University, Advisor: Prof. [Ping-Chun Hsieh](https://pinghsieh.github.io/), 2021—Present.\
+M.S., Computer Science, National Yang Ming Chiao Tung University, Advisor: Prof. [Ping-Chun Hsieh](https://pinghsieh.github.io/), 2019—2021.\
 B.S., Computer Science, National Tsing Hua University, 2014—2018.
+
+#### Professional Experience
+Visiting Scholar, Georgia Institute of Technology, School of Computational Science and Engineering, Advisor: Prof. [Kai Wang](https://guaguakai.com/), Sept 2024 - Present, Georgia, United States
 
 #### Research Interests
 Reinforcement Learning, Bayesian Optimization, Bandit Learning, Meta Learning.
