@@ -11,10 +11,7 @@ hungyh.cs08@nycu.edu.tw
 
 
 #### Education
-Ph.D., Computer Science, National Yang Ming Chiao Tung University, 
-
-    * Advisor: Prof. [Ping-Chun Hsieh](https://pinghsieh.github.io/), 2021—2025.
-    * Dissertation: Learning to Optimize: Bandit Algorithms and Reinforcement Learning for Black-box Decision Problems
+Ph.D., Computer Science, National Yang Ming Chiao Tung University, Advisor: Prof. [Ping-Chun Hsieh](https://pinghsieh.github.io/), Dissertation: Learning to Optimize: Bandit Algorithms and Reinforcement Learning for Black-box Decision Problems, 2021—2025.\
 M.S., Computer Science, National Yang Ming Chiao Tung University, Advisor: Prof. [Ping-Chun Hsieh](https://pinghsieh.github.io/), 2019—2021.\
 B.S., Computer Science, National Tsing Hua University, 2014—2018.
 
