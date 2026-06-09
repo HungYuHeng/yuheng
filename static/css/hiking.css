@@ -1,8 +1,36 @@
 .hiking-page {
     display: flex;
-    height: 100vh;
+    height: calc(100dvh - 74px);
+    min-height: 0;
     padding-top: 74px;
     box-sizing: border-box;
+}
+
+.hiking-sidebar-toggle {
+    display: none;
+}
+
+.hiking-sidebar-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.hiking-sidebar-title-row h1 {
+    margin-bottom: 0;
+}
+
+.hiking-sidebar-close {
+    display: none;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 2rem;
+    height: 2rem;
+    color: #666;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .hiking-sidebar {
@@ -151,6 +179,18 @@
     color: #666;
     line-height: 1.45;
     font-size: 0.8rem;
+}
+
+.hiking-github-hint-list {
+    margin: 0 0 0.75rem;
+    padding-left: 1.2rem;
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.hiking-github-hint-list code {
+    font-size: 0.75rem;
 }
 
 .hiking-field {
@@ -398,17 +438,72 @@
 @media screen and (max-width: 768px) {
     .hiking-page {
         flex-direction: column;
+        position: relative;
+    }
+
+    .hiking-sidebar-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        position: fixed;
+        bottom: 1.25rem;
+        left: 1rem;
+        z-index: 1000;
+        padding: 0.55rem 0.9rem;
+        border: none;
+        border-radius: 999px;
+        background: var(--h-title-color, #3948d2);
+        color: #fff;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+    }
+
+    .hiking-sidebar-close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .hiking-sidebar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
         width: 100%;
         min-width: unset;
-        max-height: 40vh;
+        max-height: 88dvh;
         border-right: none;
-        border-bottom: 2px solid var(--bs-blue, #3948d2);
+        border-top: 2px solid var(--bs-blue, #3948d2);
+        border-radius: 14px 14px 0 0;
+        box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.18);
+        z-index: 1100;
+        transform: translateY(100%);
+        transition: transform 0.28s ease;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .hiking-sidebar.is-open {
+        transform: translateY(0);
+    }
+
+    .hiking-sidebar-header {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 1;
     }
 
     .hiking-map-wrap {
-        min-height: 60vh;
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+    }
+
+    .hiking-track-list {
+        flex: none;
+        overflow-y: visible;
+        max-height: none;
     }
 }

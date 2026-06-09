@@ -176,6 +176,34 @@ function isLineFeature(feature) {
     return type === 'LineString' || type === 'MultiLineString';
 }
 
+function extractFirstWaypointDate(kmlText) {
+    const parser = new DOMParser();
+    const kmlDoc = parser.parseFromString(kmlText, 'text/xml');
+    const geojson = toGeoJSON.kml(kmlDoc);
+    const waypoint = geojson.features.find(isWaypointFeature);
+    if (!waypoint) return '';
+
+    const props = waypoint.properties || {};
+    let iso = props.timestamp || props.timespan?.begin || '';
+
+    if (!iso) {
+        const desc = getDescriptionHtml(props.description);
+        const match = desc.match(/Time:\s*(\d{4}-\d{2}-\d{2})/i)
+            || desc.match(/(\d{4}-\d{2}-\d{2})T\d{2}:/);
+        if (match) iso = match[1];
+    }
+
+    if (!iso) return '';
+
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return '';
+
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+}
+
 function isWaypointFeature(feature) {
     if (feature.geometry?.type !== 'Point') return false;
 
@@ -503,17 +531,23 @@ function initGithubSettings() {
 
 async function handleFileUpload(files) {
     const saveToGithub = document.getElementById('save-to-github').checked;
+    const useFirstWaypointDate = document.getElementById('use-first-waypoint-date').checked;
     const defaultName = document.getElementById('track-name-input').value.trim();
-    const defaultDate = document.getElementById('track-date-input').value;
+    const manualDate = document.getElementById('track-date-input').value;
 
     for (const file of files) {
         try {
             const color = nextColor();
             const { kmlText, assetUrls } = await extractKmlBundle(file);
             const displayName = defaultName || file.name.replace(/\.(kmz|kml)$/i, '');
+            let trackDate = manualDate;
+            if (useFirstWaypointDate) {
+                const fromWaypoint = extractFirstWaypointDate(kmlText);
+                if (fromWaypoint) trackDate = fromWaypoint;
+            }
             const layer = kmlToLayer(kmlText, { name: displayName, color, assetUrls });
             const id = `upload-${file.name}-${Date.now()}`;
-            addTrack(id, displayName, layer, { color, date: defaultDate, uploaded: true, assetUrls });
+            addTrack(id, displayName, layer, { color, date: trackDate, uploaded: true, assetUrls });
 
             const layerBounds = getLayerBounds(layer);
             if (layerBounds) {
@@ -527,7 +561,7 @@ async function handleFileUpload(files) {
 
                 const { entry, imageCount } = await publishTrackToGithub(file, {
                     name: displayName,
-                    date: defaultDate || undefined,
+                    date: trackDate || undefined,
                     color,
                 }, config, onProgress);
 
@@ -539,7 +573,7 @@ async function handleFileUpload(files) {
                     layer,
                     meta: {
                         color,
-                        date: defaultDate,
+                        date: trackDate,
                         file: entry.file,
                         saved: true,
                         assetBaseUrl: trackAssetBaseUrl(entry.file),
@@ -572,5 +606,22 @@ document.getElementById('kmz-upload').addEventListener('change', (e) => {
 
 document.getElementById('fit-all-btn').addEventListener('click', fitVisibleTracks);
 
+function initMobileSidebar() {
+    const sidebar = document.getElementById('hiking-sidebar');
+    const toggle = document.getElementById('sidebar-toggle');
+    const closeBtn = document.getElementById('sidebar-close');
+    if (!sidebar || !toggle) return;
+
+    const setOpen = (open) => {
+        sidebar.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        setTimeout(() => map.invalidateSize(), 320);
+    };
+
+    toggle.addEventListener('click', () => setOpen(!sidebar.classList.contains('is-open')));
+    closeBtn?.addEventListener('click', () => setOpen(false));
+}
+
+initMobileSidebar();
 initGithubSettings();
 loadManifest();

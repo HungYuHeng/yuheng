@@ -4,7 +4,7 @@
 tracks:
   - name: 北坑溪古道
     file: static/assets/gps/北坑溪古道.kml
-    date: 2026-02-19T00:00:00.000Z
+    date: '2026-02-19'
     color: '#e74c3c'
   - name: 加里山分遣所
     file: static/assets/gps/加里山分遣所.kml
