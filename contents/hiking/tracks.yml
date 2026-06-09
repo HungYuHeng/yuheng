@@ -46,3 +46,7 @@ tracks:
     file: static/assets/gps/2023-06-23焦土山下魯翁橋.kml
     date: '2023-06-23'
     color: '#e67e22'
+  - name: 2023-06-24慈恩溪上魯翁北橋頭古道
+    file: static/assets/gps/2023-06-24慈恩溪上魯翁北橋頭古道.kml
+    date: '2023-06-24'
+    color: '#1abc9c'
