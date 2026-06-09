@@ -30,3 +30,7 @@ tracks:
     file: static/assets/gps/2023-01-26_石門東稜.kml
     date: '2023-01-26'
     color: '#e74c3c'
+  - name: 2023-04-02 霞佐最低鞍下古道往佐藤方向探路
+    file: static/assets/gps/2023-04-02_霞佐最低鞍下古道往佐藤方向探路.kml
+    date: '2023-04-02'
+    color: '#3498db'
