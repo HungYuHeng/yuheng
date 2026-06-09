@@ -62,3 +62,7 @@ tracks:
     file: static/assets/gps/2023-06-25魯翁北橋頭經巴多諾夫稜線上中橫.kml
     date: '2023-06-25'
     color: '#e74c3c'
+  - name: 2023-11-11天頓山西北峰登山口
+    file: static/assets/gps/2023-11-11天頓山西北峰登山口.kml
+    date: '2023-11-11'
+    color: '#3498db'
