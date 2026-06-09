@@ -332,11 +332,31 @@ function toggleTrack(id, visible) {
 }
 
 function getLayerBounds(layer) {
-    if (layer && typeof layer.getBounds === 'function') {
-        const bounds = layer.getBounds();
-        if (bounds?.isValid()) return bounds;
+    if (!layer) return null;
+
+    const bounds = L.latLngBounds([]);
+    const seen = new Set();
+
+    function visit(target) {
+        if (!target || seen.has(target)) return;
+        seen.add(target);
+
+        if (typeof target.eachLayer === 'function') {
+            target.eachLayer(visit);
+            return;
+        }
+        if (typeof target.getLatLng === 'function') {
+            bounds.extend(target.getLatLng());
+            return;
+        }
+        if (typeof target.getBounds === 'function') {
+            const b = target.getBounds();
+            if (b?.isValid()) bounds.extend(b);
+        }
     }
-    return null;
+
+    visit(layer);
+    return bounds.isValid() ? bounds : null;
 }
 
 function fitVisibleTracks() {
