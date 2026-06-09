@@ -58,3 +58,7 @@ tracks:
     file: static/assets/gps/2023-06-24魯翁橋下慈恩溪2.kml
     date: '2023-06-24'
     color: '#2980b9'
+  - name: 2023-06-25魯翁北橋頭經巴多諾夫稜線上中橫
+    file: static/assets/gps/2023-06-25魯翁北橋頭經巴多諾夫稜線上中橫.kml
+    date: '2023-06-25'
+    color: '#e74c3c'
