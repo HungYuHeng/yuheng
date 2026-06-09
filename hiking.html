@@ -14,14 +14,14 @@
 
     <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="static/css/main.css" rel="stylesheet" />
-    <link type="text/css" href="static/css/hiking.css?v=4" rel="stylesheet" />
+    <link type="text/css" href="static/css/hiking.css?v=9" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 
 <body id="page-top" class="hiking-layout">
-    <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+    <nav class="header navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
         <div class="container-fluid px-4">
             <a class="navbar-brand fw-bold" href="index.html">Yu-Heng Hung</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
@@ -41,12 +41,13 @@
         </div>
     </nav>
 
-    <div class="hiking-page">
-        <button type="button" id="sidebar-toggle" class="hiking-sidebar-toggle" aria-expanded="false">
-            <i class="bi bi-list"></i> 軌跡面板
-        </button>
+    <button type="button" id="sidebar-toggle" class="hiking-sidebar-toggle" aria-expanded="false">
+        <i class="bi bi-list"></i> 軌跡面板
+    </button>
 
+    <div class="hiking-page">
         <aside class="hiking-sidebar" id="hiking-sidebar">
+            <div class="hiking-sidebar-top">
             <header class="hiking-sidebar-header">
                 <div class="hiking-sidebar-title-row">
                     <h1><i class="bi bi-geo-alt-fill"></i> 登山軌跡</h1>
@@ -114,6 +115,7 @@
                 </div>
                 <div id="github-settings-status" class="hiking-settings-status"></div>
             </details>
+            </div>
 
             <div class="hiking-track-panel">
                 <div class="hiking-track-list-header">
@@ -140,7 +142,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tmcw/togeojson@5.8.1/dist/togeojson.umd.js"></script>
     <script src="static/js/js-yaml.min.js"></script>
     <script src="static/js/github-publish.js"></script>
-    <script src="static/js/hiking.js?v=6"></script>
+    <script src="static/js/hiking.js?v=8"></script>
 </body>
 
 </html>
