@@ -54,3 +54,7 @@ tracks:
     file: static/assets/gps/2023-06-24魯翁橋下慈恩溪.kml
     date: '2023-06-24'
     color: '#f39c12'
+  - name: 2023-06-24魯翁橋下慈恩溪2
+    file: static/assets/gps/2023-06-24魯翁橋下慈恩溪2.kml
+    date: '2023-06-24'
+    color: '#2980b9'
