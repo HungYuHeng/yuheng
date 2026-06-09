@@ -18,3 +18,7 @@ tracks:
     file: static/assets/gps/231111_天頓山_清大初嚮.kml
     date: '2023-11-11'
     color: '#e74c3c'
+  - name: 2025-05-24野馬敢匯流口-惱寮
+    file: static/assets/gps/2025-05-24野馬敢匯流口-惱寮.kml
+    date: '2025-05-24'
+    color: '#e74c3c'
