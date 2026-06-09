@@ -42,3 +42,7 @@ tracks:
     file: static/assets/gps/2023-06-22碧綠神木下卡拉寶.kml
     date: '2023-06-22'
     color: '#9b59b6'
+  - name: 2023-06-23焦土山下魯翁橋
+    file: static/assets/gps/2023-06-23焦土山下魯翁橋.kml
+    date: '2023-06-23'
+    color: '#e67e22'
