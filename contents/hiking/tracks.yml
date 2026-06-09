@@ -10,3 +10,7 @@ tracks:
     file: static/assets/gps/加里山分遣所.kml
     date: '2025-11-08'
     color: '#3498db'
+  - name: 20251011樂山林鐵
+    file: static/assets/gps/20251011樂山林鐵.kml
+    date: '2025-10-11'
+    color: '#3498db'
