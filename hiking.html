@@ -14,13 +14,13 @@
 
     <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="static/css/main.css" rel="stylesheet" />
-    <link type="text/css" href="static/css/hiking.css" rel="stylesheet" />
+    <link type="text/css" href="static/css/hiking.css?v=4" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 
-<body id="page-top">
+<body id="page-top" class="hiking-layout">
     <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
         <div class="container-fluid px-4">
             <a class="navbar-brand fw-bold" href="index.html">Yu-Heng Hung</a>
@@ -115,15 +115,17 @@
                 <div id="github-settings-status" class="hiking-settings-status"></div>
             </details>
 
-            <div class="hiking-track-list-header">
-                <span>已儲存軌跡</span>
-                <button type="button" id="fit-all-btn" class="hiking-btn-sm" title="縮放至全部軌跡">
-                    <i class="bi bi-arrows-fullscreen"></i>
-                </button>
+            <div class="hiking-track-panel">
+                <div class="hiking-track-list-header">
+                    <span>已儲存軌跡</span>
+                    <button type="button" id="fit-all-btn" class="hiking-btn-sm" title="縮放至全部軌跡">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </button>
+                </div>
+                <ul id="track-list" class="hiking-track-list">
+                    <li class="hiking-track-empty">載入中…</li>
+                </ul>
             </div>
-            <ul id="track-list" class="hiking-track-list">
-                <li class="hiking-track-empty">載入中…</li>
-            </ul>
         </aside>
 
         <main class="hiking-map-wrap">
@@ -138,7 +140,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tmcw/togeojson@5.8.1/dist/togeojson.umd.js"></script>
     <script src="static/js/js-yaml.min.js"></script>
     <script src="static/js/github-publish.js"></script>
-    <script src="static/js/hiking.js?v=3"></script>
+    <script src="static/js/hiking.js?v=6"></script>
 </body>
 
 </html>

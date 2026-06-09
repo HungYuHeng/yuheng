@@ -1,9 +1,25 @@
+html:has(body.hiking-layout) {
+    height: 100%;
+}
+
+body.hiking-layout {
+    margin: 0;
+    overflow: hidden;
+    height: 100dvh;
+}
+
 .hiking-page {
+    position: fixed;
+    top: var(--hiking-nav-height, 74px);
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
-    height: calc(100dvh - 74px);
+    flex-direction: row;
+    align-items: stretch;
     min-height: 0;
-    padding-top: 74px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .hiking-sidebar-toggle {
@@ -36,6 +52,8 @@
 .hiking-sidebar {
     width: 320px;
     min-width: 280px;
+    min-height: 0;
+    align-self: stretch;
     background: #fff;
     border-right: 2px solid var(--bs-blue, #3948d2);
     display: flex;
@@ -44,9 +62,24 @@
     z-index: 500;
 }
 
+.hiking-sidebar > :not(.hiking-track-panel) {
+    flex-shrink: 0;
+}
+
+.hiking-track-panel {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+}
+
 .hiking-sidebar-header {
-    padding: 1.25rem 1.25rem 0.75rem;
+    padding: 0.85rem 1.25rem 0.65rem;
     border-bottom: 1px solid #eee;
+    flex-shrink: 0;
 }
 
 .hiking-sidebar-header h1 {
@@ -254,6 +287,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-shrink: 0;
     padding: 0.75rem 1.25rem 0.5rem;
     font-size: 0.8rem;
     font-weight: 600;
@@ -282,7 +316,9 @@
     margin: 0;
     padding: 0 0.75rem 1rem;
     overflow-y: auto;
-    flex: 1;
+    flex: 1 1 0;
+    min-height: 0;
+    -webkit-overflow-scrolling: touch;
 }
 
 .hiking-track-empty {
@@ -358,6 +394,8 @@
 .hiking-map-wrap {
     flex: 1;
     position: relative;
+    min-height: 0;
+    min-width: 0;
 }
 
 #map {
@@ -435,10 +473,22 @@
     font-weight: 600;
 }
 
+@media screen and (min-width: 769px) {
+    .hiking-sidebar {
+        flex-shrink: 0;
+        align-self: stretch;
+    }
+
+    .hiking-map-wrap {
+        flex: 1;
+        min-width: 0;
+        align-self: stretch;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .hiking-page {
         flex-direction: column;
-        position: relative;
     }
 
     .hiking-sidebar-toggle {
@@ -499,11 +549,19 @@
         flex: 1;
         min-height: 0;
         width: 100%;
+        margin-left: 0;
+    }
+
+    .hiking-track-panel {
+        flex: none;
+        min-height: auto;
+        overflow: visible;
+        background: #fff;
     }
 
     .hiking-track-list {
         flex: none;
         overflow-y: visible;
-        max-height: none;
+        min-height: auto;
     }
 }

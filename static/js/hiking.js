@@ -606,6 +606,26 @@ document.getElementById('kmz-upload').addEventListener('change', (e) => {
 
 document.getElementById('fit-all-btn').addEventListener('click', fitVisibleTracks);
 
+function syncNavHeight() {
+    const nav = document.getElementById('mainNav');
+    if (!nav) return;
+
+    const apply = () => {
+        const height = Math.ceil(nav.getBoundingClientRect().height);
+        document.documentElement.style.setProperty('--hiking-nav-height', `${height}px`);
+        map.invalidateSize();
+    };
+
+    apply();
+    window.addEventListener('load', apply, { once: true });
+    document.fonts?.ready?.then(apply);
+
+    if (typeof ResizeObserver !== 'undefined' && !nav._hikingNavObserver) {
+        nav._hikingNavObserver = new ResizeObserver(apply);
+        nav._hikingNavObserver.observe(nav);
+    }
+}
+
 function initMobileSidebar() {
     const sidebar = document.getElementById('hiking-sidebar');
     const toggle = document.getElementById('sidebar-toggle');
@@ -621,6 +641,8 @@ function initMobileSidebar() {
     toggle.addEventListener('click', () => setOpen(!sidebar.classList.contains('is-open')));
     closeBtn?.addEventListener('click', () => setOpen(false));
 }
+
+syncNavHeight();
 
 initMobileSidebar();
 initGithubSettings();
