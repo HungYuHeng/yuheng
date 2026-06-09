@@ -50,3 +50,7 @@ tracks:
     file: static/assets/gps/2023-06-24慈恩溪上魯翁北橋頭古道.kml
     date: '2023-06-24'
     color: '#1abc9c'
+  - name: 2023-06-24魯翁橋下慈恩溪
+    file: static/assets/gps/2023-06-24魯翁橋下慈恩溪.kml
+    date: '2023-06-24'
+    color: '#f39c12'
