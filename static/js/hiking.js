@@ -230,7 +230,7 @@ function kmlToLayer(kmlText, options = {}) {
     const color = options.color || nextColor();
     const assetUrls = options.assetUrls || {};
     const assetBaseUrl = options.assetBaseUrl || '';
-    const group = L.layerGroup();
+    const group = L.featureGroup();
 
     const lineFeatures = geojson.features.filter(isLineFeature);
     const waypointFeatures = geojson.features.filter(isWaypointFeature);
@@ -331,12 +331,20 @@ function toggleTrack(id, visible) {
     renderTrackList();
 }
 
+function getLayerBounds(layer) {
+    if (layer && typeof layer.getBounds === 'function') {
+        const bounds = layer.getBounds();
+        if (bounds?.isValid()) return bounds;
+    }
+    return null;
+}
+
 function fitVisibleTracks() {
     const bounds = L.latLngBounds([]);
     trackLayers.forEach(({ layer, visible }) => {
-        if (visible && layer.getBounds().isValid()) {
-            bounds.extend(layer.getBounds());
-        }
+        if (!visible) return;
+        const layerBounds = getLayerBounds(layer);
+        if (layerBounds) bounds.extend(layerBounds);
     });
     if (bounds.isValid()) {
         map.fitBounds(bounds, { padding: [40, 40] });
@@ -372,8 +380,9 @@ function renderTrackList() {
         `;
         label.addEventListener('click', (e) => {
             if (e.target === checkbox) return;
-            if (entry.visible && entry.layer.getBounds().isValid()) {
-                map.fitBounds(entry.layer.getBounds(), { padding: [50, 50] });
+            const layerBounds = getLayerBounds(entry.layer);
+            if (entry.visible && layerBounds) {
+                map.fitBounds(layerBounds, { padding: [50, 50] });
             }
         });
 
@@ -486,8 +495,9 @@ async function handleFileUpload(files) {
             const id = `upload-${file.name}-${Date.now()}`;
             addTrack(id, displayName, layer, { color, date: defaultDate, uploaded: true, assetUrls });
 
-            if (layer.getBounds().isValid()) {
-                map.fitBounds(layer.getBounds(), { padding: [50, 50] });
+            const layerBounds = getLayerBounds(layer);
+            if (layerBounds) {
+                map.fitBounds(layerBounds, { padding: [50, 50] });
             }
 
             if (saveToGithub) {
