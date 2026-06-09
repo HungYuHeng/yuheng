@@ -1,6 +1,6 @@
 # 登山 GPS 軌跡清單
 # 由 hiking.html 自動維護
-# color: '#3498db'
+
 tracks:
   - name: 2026-02-19北坑溪古道
     file: static/assets/gps/北坑溪古道.kml
@@ -21,4 +21,8 @@ tracks:
   - name: 2025-05-24野馬敢匯流口_惱寮
     file: static/assets/gps/2025-05-24野馬敢匯流口-惱寮.kml
     date: '2025-05-24'
+    color: '#e74c3c'
+  - name: 2023-01-20田村台根本O型
+    file: static/assets/gps/2023-01-20田村台根本O型.kml
+    date: '2023-01-20'
     color: '#e74c3c'
