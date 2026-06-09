@@ -1,2 +1,5 @@
 *.DS_Store
 
+# 原始大型 KMZ 保留在本機，不要 push（請用 scripts/extract_kmz_images.py 產生 .kml + 圖片資料夾）
+static/assets/gps/*.kmz
+
