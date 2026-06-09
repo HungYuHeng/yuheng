@@ -14,3 +14,7 @@ tracks:
     file: static/assets/gps/20251011樂山林鐵.kml
     date: '2025-10-11'
     color: '#3498db'
+  - name: 231111_天頓山_清大初嚮
+    file: static/assets/gps/231111_天頓山_清大初嚮.kml
+    date: '2023-11-11'
+    color: '#e74c3c'
