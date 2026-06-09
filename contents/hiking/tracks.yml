@@ -38,3 +38,7 @@ tracks:
     file: static/assets/gps/2023-04-03_最低鞍古道至根本.kml
     date: '2023-04-03'
     color: '#2ecc71'
+  - name: 2023-06-22碧綠神木下卡拉寶
+    file: static/assets/gps/2023-06-22碧綠神木下卡拉寶.kml
+    date: '2023-06-22'
+    color: '#9b59b6'
