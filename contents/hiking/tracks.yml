@@ -1,15 +1,12 @@
 # 登山 GPS 軌跡清單
-# 將 KMZ 檔案放到 static/assets/gps/ 資料夾，然後在下方新增一筆記錄
-#
-# 範例：
-# tracks:
-#   - name: 玉山主峰
-#     file: static/assets/gps/yushan.kmz
-#     date: 2024-06-15
-#     color: "#e74c3c"
+# 由 hiking.html 自動維護
 
-tracks: 
+tracks:
   - name: 北坑溪古道
     file: static/assets/gps/北坑溪古道.kml
-    date: 2026-02-19
-    color: "#e74c3c"
+    date: 2026-02-19T00:00:00.000Z
+    color: '#e74c3c'
+  - name: 加里山分遣所
+    file: static/assets/gps/加里山分遣所.kml
+    date: '2025-11-08'
+    color: '#3498db'
