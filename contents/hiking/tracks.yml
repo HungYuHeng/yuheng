@@ -66,3 +66,7 @@ tracks:
     file: static/assets/gps/2023-11-11天頓山西北峰登山口.kml
     date: '2023-11-11'
     color: '#3498db'
+  - name: 2023-11-25佐藤駐在所
+    file: static/assets/gps/2023-11-25佐藤駐在所.kml
+    date: '2023-11-25'
+    color: '#3498db'
