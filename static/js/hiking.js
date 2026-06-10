@@ -1,4 +1,11 @@
 const DEFAULT_TRACK_COLOR = '#e74c3c';
+const TRACK_COLOR_PALETTE = [
+    '#e74c3c', '#3498db', '#2ecc71', '#9b59b6',
+    '#e67e22', '#1abc9c', '#f39c12', '#2980b9',
+    '#c0392b', '#16a085', '#8e44ad', '#d35400',
+    '#27ae60', '#e84393', '#00cec9', '#6c5ce7',
+    '#fd79a8', '#a29bfe', '#fab1a0', '#55efc4',
+];
 
 const tracksManifestUrl = 'contents/hiking/tracks.yml';
 const SIDEBAR_WIDTH_KEY = 'hiking-sidebar-width';
@@ -516,6 +523,61 @@ function toggleAllTracks() {
     renderTrackList();
 }
 
+function shuffleInPlace(arr) {
+    for (let i = arr.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function hslToHex(h, s, l) {
+    const hue = ((h % 360) + 360) % 360;
+    const sat = s / 100;
+    const light = l / 100;
+    const chroma = sat * Math.min(light, 1 - light);
+    const component = (n) => {
+        const k = (n + hue / 30) % 12;
+        const value = light - chroma * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        return Math.round(255 * value).toString(16).padStart(2, '0');
+    };
+    return `#${component(0)}${component(8)}${component(4)}`;
+}
+
+function pickDistinctRandomColors(count) {
+    const used = new Set();
+    const result = [];
+    const pool = shuffleInPlace([...TRACK_COLOR_PALETTE]);
+
+    pool.forEach((color) => {
+        if (result.length >= count) return;
+        result.push(color);
+        used.add(color.toLowerCase());
+    });
+
+    let hue = Math.floor(Math.random() * 360);
+    while (result.length < count) {
+        const candidate = hslToHex(hue, 62, 48).toLowerCase();
+        hue += 137.508;
+        if (used.has(candidate)) continue;
+        used.add(candidate);
+        result.push(candidate);
+    }
+
+    return shuffleInPlace(result);
+}
+
+function randomizeTrackColors() {
+    const ids = [...trackLayers.keys()];
+    if (ids.length === 0) return;
+
+    const colors = pickDistinctRandomColors(ids.length);
+    ids.forEach((id, index) => {
+        setTrackColor(id, colors[index]);
+    });
+    renderTrackList();
+}
+
 function formatTrackListLabel(name, date) {
     const trimmedName = String(name || '').trim();
     const trimmedDate = String(date || '').trim();
@@ -778,6 +840,7 @@ document.getElementById('kmz-upload').addEventListener('change', (e) => {
 
 document.getElementById('fit-all-btn').addEventListener('click', fitVisibleTracks);
 document.getElementById('toggle-all-btn').addEventListener('click', toggleAllTracks);
+document.getElementById('random-colors-btn').addEventListener('click', randomizeTrackColors);
 document.getElementById('toggle-waypoints-btn').addEventListener('click', toggleWaypointIcons);
 document.getElementById('track-search').addEventListener('input', (e) => {
     trackSearchQuery = e.target.value.trim().toLowerCase();
