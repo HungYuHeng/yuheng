@@ -601,6 +601,24 @@ body.hiking-layout.is-resizing-sidebar .hiking-sidebar-resizer {
     height: 100%;
 }
 
+.hiking-draggable-scale {
+    position: absolute;
+    z-index: 1000;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.hiking-draggable-scale.is-dragging {
+    cursor: grabbing;
+}
+
+.hiking-draggable-scale .leaflet-control-scale {
+    margin: 0;
+    position: static;
+    float: none;
+}
+
 .hiking-waypoint-marker {
     background: none;
     border: none;

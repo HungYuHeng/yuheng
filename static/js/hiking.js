@@ -50,6 +50,82 @@ const baseLayers = {
 let activeBaseLayer = baseLayers.rudy;
 activeBaseLayer.addTo(map);
 
+const scaleControl = L.control.scale({
+    imperial: false,
+    metric: true,
+    position: 'bottomleft',
+});
+scaleControl.addTo(map);
+
+function initDraggableScale(control) {
+    map.whenReady(() => {
+        const scaleEl = control.getContainer();
+        const mapContainer = map.getContainer();
+        if (!scaleEl || !mapContainer) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'hiking-draggable-scale';
+        wrapper.title = '拖曳以移動比例尺';
+
+        scaleEl.parentElement?.removeChild(scaleEl);
+        wrapper.appendChild(scaleEl);
+        mapContainer.appendChild(wrapper);
+
+        wrapper.style.left = '10px';
+        wrapper.style.bottom = '10px';
+
+        let offsetX = 0;
+        let offsetY = 0;
+
+        const clampPosition = (left, top) => {
+            const maxLeft = mapContainer.clientWidth - wrapper.offsetWidth;
+            const maxTop = mapContainer.clientHeight - wrapper.offsetHeight;
+            return {
+                left: Math.max(0, Math.min(left, maxLeft)),
+                top: Math.max(0, Math.min(top, maxTop)),
+            };
+        };
+
+        const onPointerMove = (e) => {
+            const mapRect = mapContainer.getBoundingClientRect();
+            const { left, top } = clampPosition(
+                e.clientX - mapRect.left - offsetX,
+                e.clientY - mapRect.top - offsetY
+            );
+            wrapper.style.left = `${left}px`;
+            wrapper.style.top = `${top}px`;
+            wrapper.style.bottom = 'auto';
+            wrapper.style.right = 'auto';
+        };
+
+        const stopDrag = () => {
+            wrapper.classList.remove('is-dragging');
+            map.dragging.enable();
+            window.removeEventListener('pointermove', onPointerMove);
+            window.removeEventListener('pointerup', stopDrag);
+            window.removeEventListener('pointercancel', stopDrag);
+        };
+
+        wrapper.addEventListener('pointerdown', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const rect = wrapper.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            wrapper.classList.add('is-dragging');
+            map.dragging.disable();
+            window.addEventListener('pointermove', onPointerMove);
+            window.addEventListener('pointerup', stopDrag);
+            window.addEventListener('pointercancel', stopDrag);
+        });
+
+        L.DomEvent.disableClickPropagation(wrapper);
+        L.DomEvent.disableScrollPropagation(wrapper);
+    });
+}
+
+initDraggableScale(scaleControl);
+
 function setBaseLayer(key) {
     if (!baseLayers[key] || activeBaseLayer === baseLayers[key]) return;
 
