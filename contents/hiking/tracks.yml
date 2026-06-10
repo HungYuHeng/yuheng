@@ -66,3 +66,7 @@ tracks:
     file: static/assets/gps/2023-11-25佐藤駐在所.kml
     date: '2023-11-25'
     color: '#3498db'
+  - name: 2023-04-03 最低鞍古道至根本
+    file: static/assets/gps/2023-04-03_最低鞍古道至根本.kml
+    date: '2023-04-03'
+    color: '#e74c3c'
