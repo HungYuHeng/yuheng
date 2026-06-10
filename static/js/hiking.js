@@ -516,6 +516,14 @@ function toggleAllTracks() {
     renderTrackList();
 }
 
+function formatTrackListLabel(name, date) {
+    const trimmedName = String(name || '').trim();
+    const trimmedDate = String(date || '').trim();
+    if (!trimmedDate) return trimmedName;
+    if (trimmedName.startsWith(trimmedDate)) return trimmedName;
+    return `${trimmedDate} ${trimmedName}`;
+}
+
 function renderTrackList() {
     const list = document.getElementById('track-list');
     const searchInput = document.getElementById('track-search');
@@ -570,16 +578,15 @@ function renderTrackList() {
             colorInput.click();
         });
 
-        const label = document.createElement('label');
-        label.htmlFor = checkbox.id;
-        label.innerHTML = `
+        const trackInfo = document.createElement('div');
+        trackInfo.className = 'hiking-track-label';
+        trackInfo.title = '置中顯示此軌跡';
+        trackInfo.innerHTML = `
             <span class="hiking-track-info">
-                <span class="hiking-track-name">${escapeHtml(entry.name)}</span>
-                ${entry.meta.date ? `<span class="hiking-track-date">${escapeHtml(entry.meta.date)}</span>` : ''}
+                <span class="hiking-track-name">${escapeHtml(formatTrackListLabel(entry.name, entry.meta.date))}</span>
             </span>
         `;
-        label.addEventListener('click', (e) => {
-            if (e.target === checkbox) return;
+        trackInfo.addEventListener('click', () => {
             const layerBounds = getLayerBounds(entry.layer);
             if (entry.visible && layerBounds) {
                 map.fitBounds(layerBounds, { padding: [50, 50] });
@@ -593,7 +600,7 @@ function renderTrackList() {
         removeBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
         removeBtn.addEventListener('click', () => removeTrack(id));
 
-        li.append(checkbox, colorBtn, colorInput, label, removeBtn);
+        li.append(checkbox, colorBtn, colorInput, trackInfo, removeBtn);
         list.appendChild(li);
     });
 

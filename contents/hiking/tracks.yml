@@ -2,71 +2,71 @@
 # 由 hiking.html 自動維護
 
 tracks:
-  - name: 2026-02-19 北坑溪古道
+  - name: 北坑溪古道
     file: static/assets/gps/北坑溪古道.kml
     date: '2026-02-19'
     color: '#e74c3c'
-  - name: 2025-11-08 加里山分遣所
+  - name: 加里山分遣所
     file: static/assets/gps/加里山分遣所.kml
     date: '2025-11-08'
     color: '#e74c3c'
-  - name: 2025-10-11 樂山林鐵
+  - name: 樂山林鐵
     file: static/assets/gps/20251011樂山林鐵.kml
     date: '2025-10-11'
     color: '#e74c3c'
-  - name: 2023-11-11 天頓山_清大初嚮
+  - name: 天頓山_清大初嚮
     file: static/assets/gps/231111_天頓山_清大初嚮.kml
     date: '2023-11-11'
     color: '#e74c3c'
-  - name: 2025-05-24 野馬敢匯流口_惱寮
+  - name: 野馬敢匯流口_惱寮
     file: static/assets/gps/2025-05-24野馬敢匯流口-惱寮.kml
     date: '2025-05-24'
     color: '#e74c3c'
-  - name: 2023-01-20 田村台根本O型
+  - name: 田村台根本O型
     file: static/assets/gps/2023-01-20田村台根本O型.kml
     date: '2023-01-20'
     color: '#e74c3c'
-  - name: 2023-01-26 石門東稜
+  - name: 石門東稜
     file: static/assets/gps/2023-01-26_石門東稜.kml
     date: '2023-01-26'
     color: '#e74c3c'
-  - name: 2023-04-02 霞佐最低鞍下古道往佐藤方向探路
+  - name: 霞佐最低鞍下古道往佐藤方向探路
     file: static/assets/gps/2023-04-02_霞佐最低鞍下古道往佐藤方向探路.kml
     date: '2023-04-02'
     color: '#3498db'
-  - name: 2023-06-22 碧綠神木下卡拉寶
+  - name: 碧綠神木下卡拉寶
     file: static/assets/gps/2023-06-22碧綠神木下卡拉寶.kml
     date: '2023-06-22'
     color: '#9b59b6'
-  - name: 2023-06-23 焦土山下魯翁橋
+  - name: 焦土山下魯翁橋
     file: static/assets/gps/2023-06-23焦土山下魯翁橋.kml
     date: '2023-06-23'
     color: '#e67e22'
-  - name: 2023-06-24 慈恩溪上魯翁北橋頭古道
+  - name: 慈恩溪上魯翁北橋頭古道
     file: static/assets/gps/2023-06-24慈恩溪上魯翁北橋頭古道.kml
     date: '2023-06-24'
     color: '#1abc9c'
-  - name: 2023-06-24 魯翁橋下慈恩溪
+  - name: 魯翁橋下慈恩溪
     file: static/assets/gps/2023-06-24魯翁橋下慈恩溪.kml
     date: '2023-06-24'
     color: '#f39c12'
-  - name: 2023-06-24 魯翁橋下慈恩溪2
+  - name: 魯翁橋下慈恩溪2
     file: static/assets/gps/2023-06-24魯翁橋下慈恩溪2.kml
     date: '2023-06-24'
     color: '#2980b9'
-  - name: 2023-06-25 魯翁北橋頭經巴多諾夫稜線上中橫
+  - name: 魯翁北橋頭經巴多諾夫稜線上中橫
     file: static/assets/gps/2023-06-25魯翁北橋頭經巴多諾夫稜線上中橫.kml
     date: '2023-06-25'
     color: '#e74c3c'
-  - name: 2023-11-11 天頓山西北峰登山口
+  - name: 天頓山西北峰登山口
     file: static/assets/gps/2023-11-11天頓山西北峰登山口.kml
     date: '2023-11-11'
     color: '#3498db'
-  - name: 2023-11-25 佐藤駐在所
+  - name: 佐藤駐在所
     file: static/assets/gps/2023-11-25佐藤駐在所.kml
     date: '2023-11-25'
     color: '#3498db'
-  - name: 2023-04-03 最低鞍古道至根本
+  - name: 最低鞍古道至根本
     file: static/assets/gps/2023-04-03_最低鞍古道至根本.kml
     date: '2023-04-03'
     color: '#e74c3c'

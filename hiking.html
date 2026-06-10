@@ -14,7 +14,7 @@
 
     <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="static/css/main.css" rel="stylesheet" />
-    <link type="text/css" href="static/css/hiking.css?v=16" rel="stylesheet" />
+    <link type="text/css" href="static/css/hiking.css?v=18" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -50,18 +50,9 @@
 
             <div class="hiking-sidebar-sections">
                 <details class="hiking-panel-section">
-                    <summary><i class="bi bi-map"></i> 地圖與上傳</summary>
+                    <summary><i class="bi bi-cloud-upload"></i> 上傳</summary>
                     <div class="hiking-panel-body">
                         <p class="hiking-sidebar-desc">點選軌跡在地圖上顯示，或上傳 KMZ / KML 檔案預覽。</p>
-
-                        <div class="hiking-map-type">
-                            <label for="map-type-select">地圖類型</label>
-                            <select id="map-type-select" class="hiking-map-select">
-                                <option value="osm">OpenStreetMap</option>
-                                <option value="jingjian">經建三版 (1:25,000)</option>
-                                <option value="rudy" selected>魯地圖</option>
-                            </select>
-                        </div>
 
                         <div class="hiking-upload">
                             <label class="hiking-upload-label" for="kmz-upload">
@@ -150,6 +141,14 @@
 
         <main class="hiking-map-wrap">
             <div id="map"></div>
+            <div class="hiking-map-type-control">
+                <label for="map-type-select" class="hiking-map-type-label">地圖類型</label>
+                <select id="map-type-select" class="hiking-map-select" aria-label="地圖類型">
+                    <option value="osm">OpenStreetMap</option>
+                    <option value="jingjian">經建三版 (1:25,000)</option>
+                    <option value="rudy" selected>魯地圖</option>
+                </select>
+            </div>
         </main>
     </div>
 
@@ -160,7 +159,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tmcw/togeojson@5.8.1/dist/togeojson.umd.js"></script>
     <script src="static/js/js-yaml.min.js"></script>
     <script src="static/js/github-publish.js"></script>
-    <script src="static/js/hiking.js?v=14"></script>
+    <script src="static/js/hiking.js?v=17"></script>
 </body>
 
 </html>

@@ -210,26 +210,32 @@ body.hiking-layout.is-resizing-sidebar .hiking-sidebar-resizer {
     line-height: 1.4;
 }
 
-.hiking-map-type {
-    margin-bottom: 0.75rem;
+.hiking-map-type-control {
+    position: absolute;
+    right: 0.65rem;
+    bottom: 1.75rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
 }
 
-.hiking-map-type label {
-    display: block;
-    font-size: 0.75rem;
+.hiking-map-type-label {
+    font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #888;
-    margin-bottom: 0.35rem;
+    letter-spacing: 0.04em;
+    color: #666;
+    white-space: nowrap;
+    margin: 0;
 }
 
 .hiking-map-select {
-    width: 100%;
-    padding: 0.4rem 0.55rem;
+    min-width: 9.5rem;
+    padding: 0.25rem 0.4rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: #333;
     background: #fff;
     cursor: pointer;
@@ -504,7 +510,7 @@ body.hiking-layout.is-resizing-sidebar .hiking-sidebar-resizer {
     cursor: pointer;
 }
 
-.hiking-track-item label {
+.hiking-track-label {
     flex: 1;
     display: flex;
     align-items: center;
@@ -512,6 +518,16 @@ body.hiking-layout.is-resizing-sidebar .hiking-sidebar-resizer {
     cursor: pointer;
     margin: 0;
     min-width: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+}
+
+.hiking-track-label:hover .hiking-track-name {
+    color: var(--h-title-color, #3948d2);
 }
 
 .hiking-track-color-btn {
@@ -758,6 +774,18 @@ body.hiking-layout.is-resizing-sidebar .hiking-sidebar-resizer {
         min-height: 0;
         width: 100%;
         height: 100%;
+    }
+
+    .hiking-map-type-control {
+        bottom: 0.65rem;
+        right: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+
+    .hiking-map-select {
+        min-width: 0;
+        flex: 1 1 0;
+        max-width: 10rem;
     }
 
     .hiking-track-list {
