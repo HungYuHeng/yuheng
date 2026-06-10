@@ -14,7 +14,7 @@
 
     <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="static/css/main.css" rel="stylesheet" />
-    <link type="text/css" href="static/css/hiking.css?v=9" rel="stylesheet" />
+    <link type="text/css" href="static/css/hiking.css?v=16" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -47,88 +47,106 @@
 
     <div class="hiking-page">
         <aside class="hiking-sidebar" id="hiking-sidebar">
-            <div class="hiking-sidebar-top">
-            <header class="hiking-sidebar-header">
-                <div class="hiking-sidebar-title-row">
-                    <h1><i class="bi bi-geo-alt-fill"></i> 登山軌跡</h1>
-                    <button type="button" id="sidebar-close" class="hiking-sidebar-close" aria-label="關閉面板">
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                </div>
-                <p class="hiking-sidebar-desc">點選軌跡在地圖上顯示，或上傳 KMZ / KML 檔案預覽。</p>
-            </header>
 
-            <div class="hiking-map-type">
-                <label for="map-type-select">地圖類型</label>
-                <select id="map-type-select" class="hiking-map-select">
-                    <option value="osm">OpenStreetMap</option>
-                    <option value="jingjian">經建三版 (1:25,000)</option>
-                    <option value="rudy" selected>魯地圖</option>
-                </select>
-            </div>
+            <div class="hiking-sidebar-sections">
+                <details class="hiking-panel-section">
+                    <summary><i class="bi bi-map"></i> 地圖與上傳</summary>
+                    <div class="hiking-panel-body">
+                        <p class="hiking-sidebar-desc">點選軌跡在地圖上顯示，或上傳 KMZ / KML 檔案預覽。</p>
 
-            <div class="hiking-upload">
-                <label class="hiking-upload-label" for="kmz-upload">
-                    <i class="bi bi-cloud-upload"></i>
-                    <span>上傳 KMZ / KML</span>
-                    <input type="file" id="kmz-upload" accept=".kmz,.kml" multiple hidden />
-                </label>
-                <label class="hiking-save-github">
-                    <input type="checkbox" id="save-to-github" checked />
-                    上傳後儲存至 GitHub（KMZ 會自動抽出圖片並壓縮）
-                </label>
-                <div class="hiking-upload-meta">
-                    <input type="text" id="track-name-input" class="hiking-input" placeholder="軌跡名稱（選填，預設用檔名）" />
-                    <input type="date" id="track-date-input" class="hiking-input" />
-                    <label class="hiking-save-github">
-                        <input type="checkbox" id="use-first-waypoint-date" checked />
-                        使用第一個航點的日期
-                    </label>
-                </div>
-                <div id="github-status" class="hiking-status" hidden></div>
-            </div>
+                        <div class="hiking-map-type">
+                            <label for="map-type-select">地圖類型</label>
+                            <select id="map-type-select" class="hiking-map-select">
+                                <option value="osm">OpenStreetMap</option>
+                                <option value="jingjian">經建三版 (1:25,000)</option>
+                                <option value="rudy" selected>魯地圖</option>
+                            </select>
+                        </div>
 
-            <details class="hiking-github-settings">
-                <summary><i class="bi bi-github"></i> GitHub 設定</summary>
-                <p class="hiking-github-hint">
-                    需建立 Personal Access Token，並授予寫入 repo 的權限。Token 僅儲存在你的瀏覽器。
-                </p>
-                <ul class="hiking-github-hint-list">
-                    <li><strong>Fine-grained PAT</strong>（建議）：Repository 選 <code>HungYuHeng/yuheng.github.io</code>，權限 <strong>Contents → Read and write</strong></li>
-                    <li><strong>Classic PAT</strong>：勾選 <strong>repo</strong>（或公開 repo 勾選 <strong>public_repo</strong>）</li>
-                </ul>
-                <label class="hiking-field">
-                    <span>Personal Access Token</span>
-                    <input type="password" id="github-token" class="hiking-input" autocomplete="off" placeholder="github_pat_..." />
-                </label>
-                <label class="hiking-field">
-                    <span>Repository</span>
-                    <input type="text" id="github-repo" class="hiking-input" value="HungYuHeng/yuheng.github.io" />
-                </label>
-                <label class="hiking-field">
-                    <span>Branch</span>
-                    <input type="text" id="github-branch" class="hiking-input" value="main" />
-                </label>
-                <div class="hiking-github-actions">
-                    <button type="button" id="github-save-settings" class="hiking-btn-primary">儲存設定</button>
-                    <button type="button" id="github-clear-token" class="hiking-btn-sm">清除 Token</button>
-                </div>
-                <div id="github-settings-status" class="hiking-settings-status"></div>
-            </details>
-            </div>
+                        <div class="hiking-upload">
+                            <label class="hiking-upload-label" for="kmz-upload">
+                                <i class="bi bi-cloud-upload"></i>
+                                <span>上傳 KMZ / KML</span>
+                                <input type="file" id="kmz-upload" accept=".kmz,.kml" multiple hidden />
+                            </label>
+                            <label class="hiking-save-github">
+                                <input type="checkbox" id="save-to-github" checked />
+                                上傳後儲存至 GitHub（KMZ 會自動抽出圖片並壓縮）
+                            </label>
+                            <div class="hiking-upload-meta">
+                                <input type="text" id="track-name-input" class="hiking-input" placeholder="軌跡名稱（選填，預設用檔名）" />
+                                <input type="date" id="track-date-input" class="hiking-input" />
+                                <label class="hiking-save-github">
+                                    <input type="checkbox" id="use-first-waypoint-date" checked />
+                                    使用第一個航點的日期
+                                </label>
+                            </div>
+                            <div id="github-status" class="hiking-status" hidden></div>
+                        </div>
+                    </div>
+                </details>
 
-            <div class="hiking-track-panel">
-                <div class="hiking-track-list-header">
-                    <span>已儲存軌跡</span>
-                    <button type="button" id="fit-all-btn" class="hiking-btn-sm" title="縮放至全部軌跡">
-                        <i class="bi bi-arrows-fullscreen"></i>
-                    </button>
-                </div>
-                <ul id="track-list" class="hiking-track-list">
-                    <li class="hiking-track-empty">載入中…</li>
-                </ul>
+                <details class="hiking-panel-section">
+                    <summary><i class="bi bi-github"></i> GitHub 設定</summary>
+                    <div class="hiking-panel-body">
+                        <p class="hiking-github-hint">
+                            需建立 Personal Access Token，並授予寫入 repo 的權限。Token 僅儲存在你的瀏覽器。
+                        </p>
+                        <ul class="hiking-github-hint-list">
+                            <li><strong>Fine-grained PAT</strong>（建議）：Repository 選 <code>HungYuHeng/yuheng.github.io</code>，權限 <strong>Contents → Read and write</strong></li>
+                            <li><strong>Classic PAT</strong>：勾選 <strong>repo</strong>（或公開 repo 勾選 <strong>public_repo</strong>）</li>
+                        </ul>
+                        <label class="hiking-field">
+                            <span>Personal Access Token</span>
+                            <input type="password" id="github-token" class="hiking-input" autocomplete="off" placeholder="github_pat_..." />
+                        </label>
+                        <label class="hiking-field">
+                            <span>Repository</span>
+                            <input type="text" id="github-repo" class="hiking-input" value="HungYuHeng/yuheng.github.io" />
+                        </label>
+                        <label class="hiking-field">
+                            <span>Branch</span>
+                            <input type="text" id="github-branch" class="hiking-input" value="main" />
+                        </label>
+                        <div class="hiking-github-actions">
+                            <button type="button" id="github-save-settings" class="hiking-btn-primary">儲存設定</button>
+                            <button type="button" id="github-clear-token" class="hiking-btn-sm">清除 Token</button>
+                        </div>
+                        <div id="github-settings-status" class="hiking-settings-status"></div>
+                    </div>
+                </details>
+
+                <details class="hiking-panel-section hiking-track-panel" open>
+                    <summary><i class="bi bi-signpost-split"></i> 已儲存軌跡</summary>
+                    <div class="hiking-track-panel-content">
+                        <div class="hiking-panel-body hiking-track-panel-body">
+                            <div class="hiking-track-toolbar">
+                                <div class="hiking-track-search-wrap">
+                                    <i class="bi bi-search"></i>
+                                    <input type="search" id="track-search" class="hiking-track-search" placeholder="搜尋軌跡名稱或日期…" autocomplete="off" />
+                                </div>
+                                <div class="hiking-track-toolbar-actions">
+                                    <button type="button" id="toggle-waypoints-btn" class="hiking-btn-sm is-active" title="隱藏航點圖示" aria-pressed="true">
+                                        <i class="bi bi-geo-alt"></i>
+                                    </button>
+                                    <button type="button" id="toggle-all-btn" class="hiking-btn-sm" title="全選 / 取消全選">
+                                        全選
+                                    </button>
+                                    <button type="button" id="fit-all-btn" class="hiking-btn-sm" title="縮放至全部軌跡">
+                                        <i class="bi bi-arrows-fullscreen"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <ul id="track-list" class="hiking-track-list">
+                                <li class="hiking-track-empty">載入中…</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
             </div>
         </aside>
+
+        <div class="hiking-sidebar-resizer" id="sidebar-resizer" aria-hidden="true"></div>
 
         <main class="hiking-map-wrap">
             <div id="map"></div>
@@ -142,7 +160,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tmcw/togeojson@5.8.1/dist/togeojson.umd.js"></script>
     <script src="static/js/js-yaml.min.js"></script>
     <script src="static/js/github-publish.js"></script>
-    <script src="static/js/hiking.js?v=8"></script>
+    <script src="static/js/hiking.js?v=14"></script>
 </body>
 
 </html>

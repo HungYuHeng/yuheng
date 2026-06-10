@@ -1,10 +1,13 @@
-const TRACK_COLORS = [
-    '#e74c3c', '#3498db', '#2ecc71', '#9b59b6',
-    '#e67e22', '#1abc9c', '#f39c12', '#2980b9',
-];
+const DEFAULT_TRACK_COLOR = '#e74c3c';
 
 const tracksManifestUrl = 'contents/hiking/tracks.yml';
-let colorIndex = 0;
+const SIDEBAR_WIDTH_KEY = 'hiking-sidebar-width';
+const SIDEBAR_MIN_WIDTH = 240;
+const SIDEBAR_MAX_WIDTH = 560;
+const SIDEBAR_DEFAULT_WIDTH = 320;
+
+let trackSearchQuery = '';
+let showWaypointIcons = true;
 const trackLayers = new Map();
 
 const map = L.map('map', {
@@ -58,10 +61,15 @@ document.getElementById('map-type-select').addEventListener('change', (e) => {
     setBaseLayer(e.target.value);
 });
 
-function nextColor() {
-    const color = TRACK_COLORS[colorIndex % TRACK_COLORS.length];
-    colorIndex += 1;
-    return color;
+function normalizeHexColor(color, fallback = DEFAULT_TRACK_COLOR) {
+    if (typeof color !== 'string') return fallback;
+    const value = color.trim();
+    if (/^#[0-9a-f]{6}$/i.test(value)) return value.toLowerCase();
+    if (/^#[0-9a-f]{3}$/i.test(value)) {
+        const [, r, g, b] = value;
+        return `#${r}${r}${g}${g}${b}${b}`.toLowerCase();
+    }
+    return fallback;
 }
 
 function findKmlInZip(zip) {
@@ -255,7 +263,7 @@ function kmlToLayer(kmlText, options = {}) {
     const parser = new DOMParser();
     const kmlDoc = parser.parseFromString(kmlText, 'text/xml');
     const geojson = toGeoJSON.kml(kmlDoc);
-    const color = options.color || nextColor();
+    const color = normalizeHexColor(options.color, DEFAULT_TRACK_COLOR);
     const assetUrls = options.assetUrls || {};
     const assetBaseUrl = options.assetBaseUrl || '';
     const group = L.featureGroup();
@@ -272,6 +280,7 @@ function kmlToLayer(kmlText, options = {}) {
             },
         });
         group.addLayer(trackLayer);
+        group._hikingTrackLayer = trackLayer;
     }
 
     if (waypointFeatures.length > 0) {
@@ -287,6 +296,7 @@ function kmlToLayer(kmlText, options = {}) {
             },
         });
         group.addLayer(waypointLayer);
+        group._hikingWaypointLayer = waypointLayer;
     }
 
     if (lineFeatures.length === 0 && waypointFeatures.length === 0) {
@@ -311,6 +321,7 @@ function kmlToLayer(kmlText, options = {}) {
             },
         });
         group.addLayer(fallback);
+        group._hikingTrackLayer = fallback;
     }
 
     return group;
@@ -331,8 +342,13 @@ function addTrack(id, name, layer, meta = {}) {
         map.removeLayer(trackLayers.get(id).layer);
     }
 
+    if (layer._hikingWaypointLayer) {
+        meta.waypointLayer = layer._hikingWaypointLayer;
+    }
+
     trackLayers.set(id, { name, layer, meta, visible: true });
     layer.addTo(map);
+    applyWaypointVisibility();
     renderTrackList();
 }
 
@@ -346,7 +362,7 @@ function removeTrack(id) {
     }
 }
 
-function toggleTrack(id, visible) {
+function toggleTrack(id, visible, options = {}) {
     const entry = trackLayers.get(id);
     if (!entry) return;
 
@@ -356,7 +372,58 @@ function toggleTrack(id, visible) {
     } else {
         map.removeLayer(entry.layer);
     }
-    renderTrackList();
+    applyWaypointVisibility();
+    if (!options.skipRender) {
+        renderTrackList();
+    }
+}
+
+function setTrackColor(id, color) {
+    const entry = trackLayers.get(id);
+    if (!entry) return;
+
+    const normalized = normalizeHexColor(color, DEFAULT_TRACK_COLOR);
+    entry.meta.color = normalized;
+
+    const trackLayer = entry.layer._hikingTrackLayer;
+    if (trackLayer?.setStyle) {
+        trackLayer.setStyle({ color: normalized, fillColor: normalized });
+    }
+
+    const colorBtn = document.querySelector(`.hiking-track-color-btn[data-track-id="${CSS.escape(id)}"]`);
+    const colorInput = document.querySelector(`.hiking-track-color-input[data-track-id="${CSS.escape(id)}"]`);
+    if (colorBtn) colorBtn.style.background = normalized;
+    if (colorInput) colorInput.value = normalized;
+}
+
+function applyWaypointVisibility() {
+    trackLayers.forEach(({ layer, meta, visible }) => {
+        const waypointLayer = meta.waypointLayer;
+        if (!waypointLayer) return;
+
+        const shouldShow = showWaypointIcons && visible;
+        const onMap = layer.hasLayer(waypointLayer);
+        if (shouldShow && !onMap) {
+            layer.addLayer(waypointLayer);
+        } else if (!shouldShow && onMap) {
+            layer.removeLayer(waypointLayer);
+        }
+    });
+}
+
+function updateWaypointToggleButton() {
+    const btn = document.getElementById('toggle-waypoints-btn');
+    if (!btn) return;
+
+    btn.classList.toggle('is-active', showWaypointIcons);
+    btn.title = showWaypointIcons ? '隱藏航點圖示' : '顯示航點圖示';
+    btn.setAttribute('aria-pressed', showWaypointIcons ? 'true' : 'false');
+}
+
+function toggleWaypointIcons() {
+    showWaypointIcons = !showWaypointIcons;
+    applyWaypointVisibility();
+    updateWaypointToggleButton();
 }
 
 function getLayerBounds(layer) {
@@ -399,31 +466,116 @@ function fitVisibleTracks() {
     }
 }
 
+function trackMatchesSearch(entry, query) {
+    if (!query) return true;
+    const haystack = `${entry.name} ${entry.meta.date || ''}`.toLowerCase();
+    return haystack.includes(query);
+}
+
+function getFilteredTrackIds() {
+    const ids = [];
+    trackLayers.forEach((entry, id) => {
+        if (trackMatchesSearch(entry, trackSearchQuery)) ids.push(id);
+    });
+    return ids;
+}
+
+function getVisibleTrackCount(ids = null) {
+    const targetIds = ids || [...trackLayers.keys()];
+    let count = 0;
+    targetIds.forEach((id) => {
+        if (trackLayers.get(id)?.visible) count += 1;
+    });
+    return count;
+}
+
+function updateToggleAllButton() {
+    const btn = document.getElementById('toggle-all-btn');
+    if (!btn || trackLayers.size === 0) return;
+
+    const filteredIds = getFilteredTrackIds();
+    if (filteredIds.length === 0) {
+        btn.textContent = '全選';
+        btn.title = '全選';
+        return;
+    }
+
+    const allVisible = getVisibleTrackCount(filteredIds) === filteredIds.length;
+    btn.textContent = allVisible ? '取消全選' : '全選';
+    btn.title = allVisible ? '取消全選' : '全選';
+}
+
+function toggleAllTracks() {
+    const filteredIds = getFilteredTrackIds();
+    if (filteredIds.length === 0) return;
+
+    const allVisible = getVisibleTrackCount(filteredIds) === filteredIds.length;
+    filteredIds.forEach((id) => {
+        toggleTrack(id, !allVisible, { skipRender: true });
+    });
+    renderTrackList();
+}
+
 function renderTrackList() {
     const list = document.getElementById('track-list');
+    const searchInput = document.getElementById('track-search');
+    if (searchInput && document.activeElement !== searchInput) {
+        trackSearchQuery = searchInput.value.trim().toLowerCase();
+    }
+
     if (trackLayers.size === 0) {
         list.innerHTML = '<li class="hiking-track-empty">尚無軌跡。請將 KMZ 放入 static/assets/gps/ 並更新 tracks.yml，或直接上傳檔案。</li>';
+        updateToggleAllButton();
         return;
     }
 
     list.innerHTML = '';
+    let visibleCount = 0;
+
     trackLayers.forEach((entry, id) => {
+        const matches = trackMatchesSearch(entry, trackSearchQuery);
+        if (!matches) return;
+
+        visibleCount += 1;
         const li = document.createElement('li');
         li.className = 'hiking-track-item';
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = entry.visible;
-        checkbox.id = `track-${id}`;
+        checkbox.id = `track-${CSS.escape(id)}`;
         checkbox.addEventListener('change', () => toggleTrack(id, checkbox.checked));
+
+        const trackColor = normalizeHexColor(entry.meta.color, DEFAULT_TRACK_COLOR);
+        entry.meta.color = trackColor;
+
+        const colorInput = document.createElement('input');
+        colorInput.type = 'color';
+        colorInput.className = 'hiking-track-color-input';
+        colorInput.dataset.trackId = id;
+        colorInput.value = trackColor;
+        colorInput.addEventListener('input', (e) => setTrackColor(id, e.target.value));
+        colorInput.addEventListener('click', (e) => e.stopPropagation());
+
+        const colorBtn = document.createElement('button');
+        colorBtn.type = 'button';
+        colorBtn.className = 'hiking-track-color-btn';
+        colorBtn.dataset.trackId = id;
+        colorBtn.style.background = trackColor;
+        colorBtn.title = '更改軌跡顏色';
+        colorBtn.setAttribute('aria-label', '更改軌跡顏色');
+        colorBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            colorInput.click();
+        });
 
         const label = document.createElement('label');
         label.htmlFor = checkbox.id;
         label.innerHTML = `
-            <span class="hiking-track-color" style="background:${entry.meta.color || '#666'}"></span>
             <span class="hiking-track-info">
-                <span class="hiking-track-name">${entry.name}</span>
-                ${entry.meta.date ? `<span class="hiking-track-date">${entry.meta.date}</span>` : ''}
+                <span class="hiking-track-name">${escapeHtml(entry.name)}</span>
+                ${entry.meta.date ? `<span class="hiking-track-date">${escapeHtml(entry.meta.date)}</span>` : ''}
             </span>
         `;
         label.addEventListener('click', (e) => {
@@ -441,13 +593,23 @@ function renderTrackList() {
         removeBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
         removeBtn.addEventListener('click', () => removeTrack(id));
 
-        li.append(checkbox, label, removeBtn);
+        li.append(checkbox, colorBtn, colorInput, label, removeBtn);
         list.appendChild(li);
     });
+
+    if (visibleCount === 0) {
+        list.innerHTML = '<li class="hiking-track-empty">找不到符合搜尋條件的軌跡。</li>';
+    }
+
+    if (searchInput && document.activeElement !== searchInput) {
+        searchInput.value = trackSearchQuery;
+    }
+
+    updateToggleAllButton();
 }
 
 async function loadTrackFromUrl(track) {
-    const color = track.color || nextColor();
+    const color = DEFAULT_TRACK_COLOR;
     const { kmlText, assetUrls, assetBaseUrl } = await extractKmlBundle(track.file, track.file);
     const layer = kmlToLayer(kmlText, { name: track.name, color, assetUrls, assetBaseUrl });
     const id = `saved-${track.file}`;
@@ -468,6 +630,7 @@ async function loadManifest() {
 
         await Promise.all(tracks.map(loadTrackFromUrl));
         fitVisibleTracks();
+        syncTrackPanelLayout();
     } catch (err) {
         console.log('No saved tracks:', err);
         renderTrackList();
@@ -537,7 +700,7 @@ async function handleFileUpload(files) {
 
     for (const file of files) {
         try {
-            const color = nextColor();
+            const color = DEFAULT_TRACK_COLOR;
             const { kmlText, assetUrls } = await extractKmlBundle(file);
             const displayName = defaultName || file.name.replace(/\.(kmz|kml)$/i, '');
             let trackDate = manualDate;
@@ -577,9 +740,11 @@ async function handleFileUpload(files) {
                         file: entry.file,
                         saved: true,
                         assetBaseUrl: trackAssetBaseUrl(entry.file),
+                        waypointLayer: layer._hikingWaypointLayer || null,
                     },
                     visible: true,
                 });
+                applyWaypointVisibility();
                 renderTrackList();
 
                 const photoNote = imageCount > 0 ? `（已抽出 ${imageCount} 張圖片）` : '';
@@ -605,6 +770,72 @@ document.getElementById('kmz-upload').addEventListener('change', (e) => {
 });
 
 document.getElementById('fit-all-btn').addEventListener('click', fitVisibleTracks);
+document.getElementById('toggle-all-btn').addEventListener('click', toggleAllTracks);
+document.getElementById('toggle-waypoints-btn').addEventListener('click', toggleWaypointIcons);
+document.getElementById('track-search').addEventListener('input', (e) => {
+    trackSearchQuery = e.target.value.trim().toLowerCase();
+    renderTrackList();
+});
+
+function clampSidebarWidth(width) {
+    return Math.min(SIDEBAR_MAX_WIDTH, Math.max(SIDEBAR_MIN_WIDTH, width));
+}
+
+function getSidebarWidth() {
+    const raw = getComputedStyle(document.body).getPropertyValue('--hiking-sidebar-width').trim();
+    return Number.parseInt(raw, 10) || SIDEBAR_DEFAULT_WIDTH;
+}
+
+function setSidebarWidth(width, persist = true) {
+    const clamped = clampSidebarWidth(width);
+    document.body.style.setProperty('--hiking-sidebar-width', `${clamped}px`);
+    if (persist) {
+        try {
+            localStorage.setItem(SIDEBAR_WIDTH_KEY, String(clamped));
+        } catch (_) { /* ignore */ }
+    }
+    map.invalidateSize();
+    syncTrackPanelLayout();
+}
+
+function initSidebarResize() {
+    const resizer = document.getElementById('sidebar-resizer');
+    if (!resizer || window.matchMedia('(max-width: 768px)').matches) return;
+
+    const saved = Number.parseInt(localStorage.getItem(SIDEBAR_WIDTH_KEY) || '', 10);
+    if (Number.isFinite(saved)) {
+        setSidebarWidth(saved, false);
+    }
+
+    let startX = 0;
+    let startWidth = 0;
+
+    const stopResize = () => {
+        document.body.classList.remove('is-resizing-sidebar');
+        resizer.classList.remove('is-dragging');
+        window.removeEventListener('pointermove', onPointerMove);
+        window.removeEventListener('pointerup', stopResize);
+        window.removeEventListener('pointercancel', stopResize);
+    };
+
+    const onPointerMove = (e) => {
+        e.preventDefault();
+        setSidebarWidth(startWidth + (e.clientX - startX));
+    };
+
+    resizer.addEventListener('pointerdown', (e) => {
+        if (window.matchMedia('(max-width: 768px)').matches) return;
+        e.preventDefault();
+        startX = e.clientX;
+        startWidth = getSidebarWidth();
+        document.body.classList.add('is-resizing-sidebar');
+        resizer.classList.add('is-dragging');
+        resizer.setPointerCapture(e.pointerId);
+        window.addEventListener('pointermove', onPointerMove);
+        window.addEventListener('pointerup', stopResize);
+        window.addEventListener('pointercancel', stopResize);
+    });
+}
 
 function syncNavHeight() {
     const nav = document.getElementById('mainNav');
@@ -635,15 +866,63 @@ function initMobileSidebar() {
     const setOpen = (open) => {
         sidebar.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        setTimeout(() => map.invalidateSize(), 320);
+        setTimeout(() => {
+            map.invalidateSize();
+            syncTrackPanelLayout();
+        }, 320);
     };
 
     toggle.addEventListener('click', () => setOpen(!sidebar.classList.contains('is-open')));
     closeBtn?.addEventListener('click', () => setOpen(false));
 }
 
+function syncTrackPanelLayout() {
+    const panel = document.querySelector('.hiking-track-panel');
+    const content = panel?.querySelector('.hiking-track-panel-content');
+    const summary = panel?.querySelector('summary');
+    const sections = panel?.closest('.hiking-sidebar-sections');
+    if (!panel || !content || !summary || !sections) return;
+
+    if (panel.open) {
+        const sectionsBottom = sections.getBoundingClientRect().bottom;
+        const summaryBottom = summary.getBoundingClientRect().bottom;
+        const height = sectionsBottom - summaryBottom;
+        content.style.height = `${Math.max(height, 0)}px`;
+    } else {
+        content.style.height = '';
+    }
+}
+
+function initTrackPanelLayout() {
+    const panel = document.querySelector('.hiking-track-panel');
+    const sidebar = document.getElementById('hiking-sidebar');
+    if (!panel) return;
+
+    panel.addEventListener('toggle', () => {
+        requestAnimationFrame(() => {
+            syncTrackPanelLayout();
+            requestAnimationFrame(syncTrackPanelLayout);
+        });
+    });
+
+    window.addEventListener('resize', syncTrackPanelLayout);
+
+    if (typeof ResizeObserver !== 'undefined') {
+        const observer = new ResizeObserver(() => syncTrackPanelLayout());
+        if (sidebar) observer.observe(sidebar);
+        observer.observe(panel);
+        const sections = panel.closest('.hiking-sidebar-sections');
+        if (sections) observer.observe(sections);
+    }
+
+    syncTrackPanelLayout();
+}
+
 syncNavHeight();
 
+initSidebarResize();
+initTrackPanelLayout();
 initMobileSidebar();
 initGithubSettings();
+updateWaypointToggleButton();
 loadManifest();

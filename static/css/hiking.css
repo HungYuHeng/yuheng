@@ -11,6 +11,7 @@ body.hiking-layout {
     height: 100svh;
     height: 100dvh;
     overflow: hidden;
+    --hiking-sidebar-width: 320px;
 }
 
 body.hiking-layout #mainNav {
@@ -25,7 +26,7 @@ body.hiking-layout .hiking-sidebar-toggle {
 .hiking-page {
     grid-row: 2;
     display: grid;
-    grid-template-columns: 320px minmax(0, 1fr);
+    grid-template-columns: var(--hiking-sidebar-width) 4px minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
     min-height: 0;
     overflow: hidden;
@@ -57,77 +58,178 @@ body.hiking-layout .hiking-sidebar-toggle {
 body.hiking-layout .hiking-sidebar {
     grid-column: 1;
     grid-row: 1;
-    width: 320px;
-    min-width: 280px;
+    width: var(--hiking-sidebar-width);
+    min-width: 0;
     height: 100%;
     min-height: 0;
     padding: 0;
     margin: 0;
-    background: #fff;
-    border-right: 2px solid var(--bs-blue, #3948d2);
+    background: #f3f3f3;
+    border-right: 1px solid #e0e0e0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     z-index: 500;
 }
 
-.hiking-sidebar-top {
-    flex: 0 0 auto;
-    min-height: 0;
-    overflow-y: auto;
+.hiking-sidebar-resizer {
+    grid-column: 2;
+    grid-row: 1;
+    width: 4px;
+    cursor: col-resize;
+    background: transparent;
+    position: relative;
+    z-index: 501;
+    flex-shrink: 0;
+    touch-action: none;
 }
 
-.hiking-track-panel {
-    flex: 1 1 0;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border-top: 1px solid #eee;
-    background: #fafafa;
+.hiking-sidebar-resizer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -5px;
+    right: -5px;
+}
+
+.hiking-sidebar-resizer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1px;
+    width: 1px;
+    background: #e0e0e0;
+    transition: background 0.15s, width 0.15s, left 0.15s;
+    pointer-events: none;
+}
+
+.hiking-sidebar-resizer:hover::after,
+.hiking-sidebar-resizer.is-dragging::after {
+    left: 0;
+    width: 2px;
+    background: var(--h-title-color, #3948d2);
+}
+
+body.hiking-layout.is-resizing-sidebar {
+    cursor: col-resize;
+    user-select: none;
+}
+
+body.hiking-layout.is-resizing-sidebar .hiking-sidebar-resizer {
+    cursor: col-resize;
 }
 
 .hiking-sidebar-header {
-    padding: 0.85rem 1.25rem 0.65rem;
-    border-bottom: 1px solid #eee;
+    padding: 0.65rem 0.85rem;
+    border-bottom: 1px solid #e0e0e0;
     flex-shrink: 0;
+    background: #ececec;
 }
 
 .hiking-sidebar-header h1 {
     font-family: "Kanit", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     color: var(--h-title-color, #3948d2);
-    margin: 0 0 0.5rem;
+    margin: 0;
+}
+
+.hiking-sidebar-sections {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.hiking-sidebar-sections:has(.hiking-track-panel[open]) {
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    overflow: hidden;
+}
+
+.hiking-panel-section {
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.85rem;
+    background: #f3f3f3;
+}
+
+.hiking-panel-section summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #555;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.85rem;
+    user-select: none;
+    background: #ececec;
+    border-bottom: 1px solid transparent;
+    transition: background 0.15s;
+}
+
+.hiking-panel-section summary:hover {
+    background: #e4e4e4;
+}
+
+.hiking-panel-section[open] summary {
+    border-bottom-color: #e0e0e0;
+}
+
+.hiking-panel-section summary::-webkit-details-marker {
+    display: none;
+}
+
+.hiking-panel-section summary::before {
+    content: '\F285';
+    font-family: 'bootstrap-icons';
+    font-size: 0.65rem;
+    color: #888;
+    transition: transform 0.15s;
+    flex-shrink: 0;
+}
+
+.hiking-panel-section[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.hiking-panel-body {
+    padding: 0.75rem 0.85rem;
+    background: #f3f3f3;
 }
 
 .hiking-sidebar-desc {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: #666;
-    margin: 0;
+    margin: 0 0 0.75rem;
     line-height: 1.4;
 }
 
 .hiking-map-type {
-    padding: 0.75rem 1.25rem;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 0.75rem;
 }
 
 .hiking-map-type label {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #888;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.35rem;
 }
 
 .hiking-map-select {
     width: 100%;
-    padding: 0.45rem 0.6rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    padding: 0.4rem 0.55rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
     color: #333;
     background: #fff;
     cursor: pointer;
@@ -136,20 +238,19 @@ body.hiking-layout .hiking-sidebar {
 .hiking-map-select:focus {
     outline: none;
     border-color: var(--h-title-color, #3948d2);
-    box-shadow: 0 0 0 2px rgba(57, 72, 210, 0.15);
+    box-shadow: 0 0 0 1px rgba(57, 72, 210, 0.25);
 }
 
 .hiking-upload {
-    padding: 0.75rem 1.25rem;
-    border-bottom: 1px solid #eee;
+    padding: 0;
 }
 
 .hiking-save-github {
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    margin-top: 0.6rem;
-    font-size: 0.85rem;
+    margin-top: 0.55rem;
+    font-size: 0.82rem;
     color: #444;
     cursor: pointer;
 }
@@ -157,17 +258,18 @@ body.hiking-layout .hiking-sidebar {
 .hiking-upload-meta {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    margin-top: 0.6rem;
+    gap: 0.35rem;
+    margin-top: 0.55rem;
 }
 
 .hiking-input {
     width: 100%;
-    padding: 0.4rem 0.55rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.82rem;
     box-sizing: border-box;
+    background: #fff;
 }
 
 .hiking-input:focus {
@@ -176,15 +278,15 @@ body.hiking-layout .hiking-sidebar {
 }
 
 .hiking-status {
-    margin-top: 0.6rem;
-    padding: 0.5rem 0.65rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
+    margin-top: 0.55rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
     line-height: 1.4;
 }
 
 .hiking-status-info {
-    background: #f0f4ff;
+    background: #e8ecff;
     color: #3948d2;
 }
 
@@ -198,70 +300,50 @@ body.hiking-layout .hiking-sidebar {
     color: #c0392b;
 }
 
-.hiking-github-settings {
-    padding: 0.75rem 1.25rem;
-    border-bottom: 1px solid #eee;
-    font-size: 0.85rem;
-}
-
-.hiking-github-settings summary {
-    cursor: pointer;
-    font-weight: 600;
-    color: #444;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.hiking-github-settings summary::-webkit-details-marker {
-    display: none;
-}
-
 .hiking-github-hint {
-    margin: 0.75rem 0;
+    margin: 0 0 0.65rem;
     color: #666;
     line-height: 1.45;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
 }
 
 .hiking-github-hint-list {
-    margin: 0 0 0.75rem;
-    padding-left: 1.2rem;
-    font-size: 0.8rem;
+    margin: 0 0 0.65rem;
+    padding-left: 1.15rem;
+    font-size: 0.78rem;
     color: #666;
     line-height: 1.5;
 }
 
 .hiking-github-hint-list code {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
 }
 
 .hiking-field {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    margin-bottom: 0.5rem;
+    gap: 0.2rem;
+    margin-bottom: 0.45rem;
 }
 
 .hiking-field span {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: #888;
 }
 
 .hiking-github-actions {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+    gap: 0.45rem;
+    margin-top: 0.45rem;
 }
 
 .hiking-btn-primary {
-    padding: 0.4rem 0.75rem;
+    padding: 0.35rem 0.65rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     background: var(--h-title-color, #3948d2);
     color: #fff;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     cursor: pointer;
 }
 
@@ -270,8 +352,8 @@ body.hiking-layout .hiking-sidebar {
 }
 
 .hiking-settings-status {
-    margin-top: 0.5rem;
-    font-size: 0.8rem;
+    margin-top: 0.45rem;
+    font-size: 0.78rem;
     color: #666;
 }
 
@@ -279,13 +361,14 @@ body.hiking-layout .hiking-sidebar {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.65rem 1rem;
-    border: 2px dashed #ccc;
-    border-radius: 8px;
+    gap: 0.45rem;
+    padding: 0.55rem 0.85rem;
+    border: 1px dashed #bbb;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #555;
+    background: #fff;
     transition: border-color 0.2s, background 0.2s;
 }
 
@@ -294,27 +377,85 @@ body.hiking-layout .hiking-sidebar {
     background: #f8f9ff;
 }
 
-.hiking-track-list-header {
+.hiking-track-panel {
+    min-height: 0;
+}
+
+.hiking-track-panel[open] {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.hiking-track-panel-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.hiking-track-panel-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    padding: 0.55rem 0.65rem 0.65rem;
+    overflow: hidden;
+}
+
+.hiking-track-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 0.45rem;
+    flex-shrink: 0;
+}
+
+.hiking-track-search-wrap {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-shrink: 0;
-    padding: 0.75rem 1.25rem 0.5rem;
+    gap: 0.35rem;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.hiking-track-search-wrap:focus-within {
+    border-color: var(--h-title-color, #3948d2);
+    box-shadow: 0 0 0 1px rgba(57, 72, 210, 0.2);
+}
+
+.hiking-track-search-wrap i {
+    color: #999;
     font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #888;
+    flex-shrink: 0;
+}
+
+.hiking-track-search {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.82rem;
+    background: transparent;
+    min-width: 0;
+}
+
+.hiking-track-toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
 }
 
 .hiking-btn-sm {
-    background: none;
-    border: 1px solid #ddd;
+    background: #fff;
+    border: 1px solid #ccc;
     border-radius: 4px;
     padding: 0.2rem 0.45rem;
     cursor: pointer;
-    color: #666;
-    line-height: 1;
+    color: #555;
+    font-size: 0.78rem;
+    line-height: 1.3;
 }
 
 .hiking-btn-sm:hover {
@@ -322,10 +463,16 @@ body.hiking-layout .hiking-sidebar {
     color: var(--h-title-color, #3948d2);
 }
 
+.hiking-btn-sm.is-active {
+    border-color: var(--h-title-color, #3948d2);
+    color: var(--h-title-color, #3948d2);
+    background: #e8ecff;
+}
+
 .hiking-track-list {
     list-style: none;
     margin: 0;
-    padding: 0 0.75rem 1rem;
+    padding: 0;
     overflow-y: auto;
     flex: 1 1 0;
     min-height: 0;
@@ -333,8 +480,8 @@ body.hiking-layout .hiking-sidebar {
 }
 
 .hiking-track-empty {
-    padding: 1rem;
-    font-size: 0.85rem;
+    padding: 0.75rem 0.25rem;
+    font-size: 0.82rem;
     color: #999;
     line-height: 1.5;
 }
@@ -342,9 +489,14 @@ body.hiking-layout .hiking-sidebar {
 .hiking-track-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.25rem;
-    border-bottom: 1px solid #f0f0f0;
+    gap: 0.45rem;
+    padding: 0.4rem 0.2rem;
+    border-bottom: 1px solid #e8e8e8;
+    position: relative;
+}
+
+.hiking-track-item.is-hidden {
+    display: none;
 }
 
 .hiking-track-item input[type="checkbox"] {
@@ -356,17 +508,34 @@ body.hiking-layout .hiking-sidebar {
     flex: 1;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     cursor: pointer;
     margin: 0;
     min-width: 0;
 }
 
-.hiking-track-color {
+.hiking-track-color-btn {
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    cursor: pointer;
     flex-shrink: 0;
+    padding: 0;
+}
+
+.hiking-track-color-btn:hover {
+    box-shadow: 0 0 0 2px rgba(57, 72, 210, 0.25);
+}
+
+.hiking-track-color-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
 }
 
 .hiking-track-info {
@@ -376,7 +545,7 @@ body.hiking-layout .hiking-sidebar {
 }
 
 .hiking-track-name {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
@@ -384,16 +553,16 @@ body.hiking-layout .hiking-sidebar {
 }
 
 .hiking-track-date {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: #999;
 }
 
 .hiking-btn-remove {
     background: none;
     border: none;
-    color: #ccc;
+    color: #bbb;
     cursor: pointer;
-    padding: 0.2rem;
+    padding: 0.15rem;
     line-height: 1;
     flex-shrink: 0;
 }
@@ -403,7 +572,7 @@ body.hiking-layout .hiking-sidebar {
 }
 
 .hiking-map-wrap {
-    grid-column: 2;
+    grid-column: 3;
     grid-row: 1;
     position: relative;
     min-height: 0;
@@ -533,12 +702,16 @@ body.hiking-layout .hiking-sidebar {
         box-sizing: border-box;
     }
 
+    .hiking-sidebar-resizer {
+        display: none;
+    }
+
     .hiking-sidebar {
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
-        width: 100%;
+        width: 100% !important;
         min-width: unset;
         max-height: 88dvh;
         border-right: none;
@@ -548,16 +721,25 @@ body.hiking-layout .hiking-sidebar {
         z-index: 1100;
         display: flex;
         flex-direction: column;
-        grid-template-rows: unset;
+        grid-column: 1;
         transform: translateY(100%);
         transition: transform 0.28s ease;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+        overflow: hidden;
     }
 
-    .hiking-sidebar-top {
-        flex-shrink: 0;
-        overflow-y: visible;
+    .hiking-sidebar-sections {
+        overflow-y: auto;
+    }
+
+    .hiking-sidebar-sections:has(.hiking-track-panel[open]) {
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr);
+        overflow: hidden;
+    }
+
+    .hiking-track-panel[open] {
+        height: 100%;
+        min-height: 0;
     }
 
     .hiking-sidebar.is-open {
@@ -567,7 +749,7 @@ body.hiking-layout .hiking-sidebar {
     .hiking-sidebar-header {
         position: sticky;
         top: 0;
-        background: #fff;
+        background: #ececec;
         z-index: 1;
     }
 
@@ -578,16 +760,8 @@ body.hiking-layout .hiking-sidebar {
         height: 100%;
     }
 
-    .hiking-track-panel {
-        flex: none;
-        min-height: auto;
-        overflow: visible;
-        background: #fff;
-    }
-
     .hiking-track-list {
-        flex: none;
-        overflow-y: visible;
-        min-height: auto;
+        flex: 1 1 0;
+        min-height: 0;
     }
 }
