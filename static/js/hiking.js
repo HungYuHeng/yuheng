@@ -125,6 +125,7 @@ function initDraggableScale(control) {
 }
 
 initDraggableScale(scaleControl);
+initTmGrid(map);
 
 function setBaseLayer(key) {
     if (!baseLayers[key] || activeBaseLayer === baseLayers[key]) return;

@@ -220,6 +220,194 @@ body.hiking-layout.is-resizing-sidebar .hiking-sidebar-resizer {
     gap: 0.35rem;
 }
 
+.hiking-map-grid-control {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.55rem;
+    padding: 0.4rem 0.55rem;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.18);
+    font-size: 0.78rem;
+    max-width: calc(100% - 1rem);
+}
+
+.hiking-map-grid-title {
+    font-weight: 600;
+    color: #555;
+    white-space: nowrap;
+}
+
+.hiking-grid-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0;
+    cursor: pointer;
+    color: #444;
+    white-space: nowrap;
+}
+
+.hiking-grid-toggle input {
+    cursor: pointer;
+    accent-color: var(--h-title-color, #3948d2);
+}
+
+.hiking-map-grid-hint {
+    flex: 1 1 100%;
+    font-size: 0.72rem;
+    color: #888;
+}
+
+.hiking-map-grid-style {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.65rem;
+    flex: 1 1 100%;
+    padding-top: 0.15rem;
+    border-top: 1px solid #e8e8e8;
+}
+
+.hiking-grid-style-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 0;
+    color: #555;
+    white-space: nowrap;
+}
+
+.hiking-grid-style-item input[type="color"] {
+    width: 1.65rem;
+    height: 1.35rem;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    background: none;
+}
+
+.hiking-grid-style-item input[type="range"] {
+    width: 4.5rem;
+    cursor: pointer;
+    accent-color: var(--h-title-color, #3948d2);
+}
+
+.hiking-grid-width-value {
+    min-width: 0.75rem;
+    text-align: center;
+    color: #666;
+}
+
+.hiking-map-grid-select {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.55rem;
+    padding-top: 0.35rem;
+    border-top: 1px solid #e8e8e8;
+}
+
+.hiking-map-grid-select-title {
+    font-weight: 600;
+    color: #555;
+    white-space: nowrap;
+}
+
+.hiking-map-grid-select-crs {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.hiking-grid-export-btn {
+    font-size: 0.78rem;
+}
+
+.hiking-grid-export-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.hiking-map-grid-select-status {
+    flex: 1 1 100%;
+    font-size: 0.72rem;
+    color: #666;
+    line-height: 1.35;
+}
+
+#map.hiking-map-select-mode {
+    cursor: crosshair;
+}
+
+.tm-grid-label-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 650;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.tm-grid-label-icon {
+    background: transparent !important;
+    border: none !important;
+}
+
+.tm-grid-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(--tm-label-color, #3948d2);
+    background: rgba(255, 255, 255, 0.88);
+    padding: 1px 4px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    user-select: none;
+}
+
+.tm-grid-label--overlay {
+    position: absolute;
+}
+
+.tm-grid-label--overlay.tm-grid-label--northing {
+    transform: translateY(-50%);
+}
+
+.tm-grid-label--overlay.tm-grid-label--easting {
+    transform: translateX(-50%);
+}
+
+.tm-grid-label--northing {
+    transform: translate(4px, -50%);
+}
+
+.tm-grid-label--easting {
+    transform: translate(-50%, calc(-100% - 3px));
+}
+
+.hiking-export-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.92);
+    color: #444;
+    font-size: 0.95rem;
+    pointer-events: all;
+}
+
 .hiking-map-type-label {
     font-size: 0.72rem;
     font-weight: 600;

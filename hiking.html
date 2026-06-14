@@ -14,7 +14,7 @@
 
     <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="static/css/main.css" rel="stylesheet" />
-    <link type="text/css" href="static/css/hiking.css?v=20" rel="stylesheet" />
+    <link type="text/css" href="static/css/hiking.css?v=27" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -78,7 +78,7 @@
                     <summary><i class="bi bi-github"></i> GitHub 設定</summary>
                     <div class="hiking-panel-body">
                         <p class="hiking-github-hint">
-                            需建立 Personal Access Token，並授予寫入 repo 的權限。Token 僅儲存在你的瀏覽器。
+                            需建立 Personal Access Token，並授予寫入 repo 的權限。Token 僅儲存在瀏覽器。
                         </p>
                         <!-- <ul class="hiking-github-hint-list">
                             <li><strong>Fine-grained PAT</strong>（建議）：Repository 選 <code>HungYuHeng/yuheng.github.io</code>，權限 <strong>Contents → Read and write</strong></li>
@@ -141,6 +141,47 @@
 
         <main class="hiking-map-wrap">
             <div id="map"></div>
+            <div class="hiking-map-grid-control">
+                <span class="hiking-map-grid-title">座標格網 (1km)</span>
+                <label class="hiking-grid-toggle">
+                    <input type="checkbox" id="toggle-twd97-grid" />
+                    TWD97
+                </label>
+                <label class="hiking-grid-toggle">
+                    <input type="checkbox" id="toggle-twd67-grid" />
+                    TWD67
+                </label>
+                <div class="hiking-map-grid-style">
+                    <label class="hiking-grid-style-item" for="tm-grid-color">
+                        <span>顏色</span>
+                        <input type="color" id="tm-grid-color" value="#3948d2" aria-label="格線顏色" />
+                    </label>
+                    <label class="hiking-grid-style-item" for="tm-grid-width">
+                        <span>線寬</span>
+                        <input type="range" id="tm-grid-width" min="1" max="6" step="1" value="1" aria-label="格線線寬" />
+                        <span id="tm-grid-width-value" class="hiking-grid-width-value">1</span>
+                    </label>
+                </div>
+                <!-- PDF 範圍選取（暫時停用）
+                <div class="hiking-map-grid-select">
+                    <span class="hiking-map-grid-select-title">PDF 範圍選取</span>
+                    <div class="hiking-map-grid-select-crs">
+                        <label class="hiking-grid-toggle">
+                            <input type="radio" name="tm-select-crs" value="twd97" checked />
+                            TWD97
+                        </label>
+                        <label class="hiking-grid-toggle">
+                            <input type="radio" name="tm-select-crs" value="twd67" />
+                            TWD67
+                        </label>
+                    </div>
+                    <button type="button" id="tm-grid-export-pdf" class="hiking-btn-sm hiking-grid-export-btn" disabled>
+                        匯出 PDF
+                    </button>
+                    <span id="tm-grid-select-status" class="hiking-map-grid-select-status">請在地圖上點選第一格</span>
+                </div>
+                -->
+            </div>
             <div class="hiking-map-type-control">
                 <label for="map-type-select" class="hiking-map-type-label">地圖類型</label>
                 <select id="map-type-select" class="hiking-map-select" aria-label="地圖類型">
@@ -157,9 +198,15 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tmcw/togeojson@5.8.1/dist/togeojson.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/proj4@2.11.0/dist/proj4.js"></script>
+    <!-- PDF 匯出（暫時停用）
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+    -->
     <script src="static/js/js-yaml.min.js"></script>
     <script src="static/js/github-publish.js"></script>
-    <script src="static/js/hiking.js?v=21"></script>
+    <script src="static/js/tm-grid.js?v=12"></script>
+    <script src="static/js/hiking.js?v=22"></script>
 </body>
 
 </html>
