@@ -732,7 +732,7 @@ body.hiking-layout.is-resizing-sidebar .hiking-sidebar-resizer {
     .hiking-page {
         grid-row: 1;
         grid-template-columns: 1fr;
-        padding-top: var(--hiking-nav-height, 74px);
+        padding-top: var(--hiking-nav-height, 0px);
         box-sizing: border-box;
     }
 

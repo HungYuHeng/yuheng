@@ -985,7 +985,11 @@ function initSidebarResize() {
 
 function syncNavHeight() {
     const nav = document.getElementById('mainNav');
-    if (!nav) return;
+    if (!nav) {
+        document.documentElement.style.setProperty('--hiking-nav-height', '0px');
+        map.invalidateSize();
+        return;
+    }
 
     const apply = () => {
         const height = Math.ceil(nav.getBoundingClientRect().height);
