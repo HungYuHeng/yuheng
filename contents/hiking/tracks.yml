@@ -70,3 +70,7 @@ tracks:
     file: static/assets/gps/2023-04-03_最低鞍古道至根本.kml
     date: '2023-04-03'
     color: '#e74c3c'
+  - name: 2025-11-22 根本古道
+    file: static/assets/gps/2025-11-22_根本古道.kml
+    date: '2023-10-26'
+    color: '#e74c3c'
