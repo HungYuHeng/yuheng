@@ -74,3 +74,7 @@ tracks:
     file: static/assets/gps/2025-11-22_根本古道.kml
     date: '2025-11-22'
     color: '#e74c3c'
+  - name: 2025-11-22 腦寮林道前段探勘
+    file: static/assets/gps/2025-11-22_腦寮林道前段探勘.kml
+    date: '2024-01-01'
+    color: '#e74c3c'

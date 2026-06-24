@@ -1,0 +1,666 @@
+<?xml version='1.0' encoding='utf-8'?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2"><Document><name>2026-06-19 東埔大水窟 (before 2026-06-19) (after 2023-11-27)</name>
+<snippet>Created by Hiking Logger v4.0.2 b327 at 2026-06-23T05:38:16Z</snippet>
+<LookAt>
+<gx:TimeSpan>
+<begin>2026-06-18T22:41:39Z</begin>
+<end>2026-06-23T05:36:04Z</end>
+</gx:TimeSpan>
+<longitude>121.03956</longitude>
+<latitude>24.076589</latitude>
+<altitude>0</altitude>
+<tilt>60</tilt>
+<range>165951.5</range>
+</LookAt>
+<Style id="waypoint_n">
+<IconStyle>
+<scale>0.8</scale>
+<Icon>
+<href>files/waypoint.png</href>
+</Icon>
+<hotSpot x=".5" y="0" xunits="fraction" yunits="fraction" />
+</IconStyle>
+</Style>
+<Style id="waypoint_h">
+<IconStyle>
+<Icon>
+<href>files/waypoint.png</href>
+</Icon>
+<hotSpot x=".5" y="0" xunits="fraction" yunits="fraction" />
+</IconStyle>
+</Style>
+<StyleMap id="waypoint">
+<Pair>
+<key>normal</key>
+<styleUrl>#waypoint_n</styleUrl>
+</Pair>
+<Pair>
+<key>highlight</key>
+<styleUrl>#waypoint_h</styleUrl>
+</Pair>
+</StyleMap>
+<Style id="waypoint_i_n">
+<IconStyle>
+<scale>0.8</scale>
+<Icon>
+<href>files/waypoint_i.png</href>
+</Icon>
+<hotSpot x=".5" y="0" xunits="fraction" yunits="fraction" />
+</IconStyle>
+</Style>
+<Style id="waypoint_i_h">
+<IconStyle>
+<Icon>
+<href>files/waypoint_i.png</href>
+</Icon>
+<hotSpot x=".5" y="0" xunits="fraction" yunits="fraction" />
+</IconStyle>
+</Style>
+<StyleMap id="waypoint_i">
+<Pair>
+<key>normal</key>
+<styleUrl>#waypoint_i_n</styleUrl>
+</Pair>
+<Pair>
+<key>highlight</key>
+<styleUrl>#waypoint_i_h</styleUrl>
+</Pair>
+</StyleMap>
+<Style id="track_begin_n">
+<IconStyle>
+<scale>0.8</scale>
+<Icon>
+<href>files/track_begin.png</href>
+</Icon>
+<hotSpot x=".5" y="0" xunits="fraction" yunits="fraction" />
+</IconStyle>
+</Style>
+<Style id="track_begin_h">
+<IconStyle>
+<Icon>
+<href>files/track_begin.png</href>
+</Icon>
+<hotSpot x=".5" y="0" xunits="fraction" yunits="fraction" />
+</IconStyle>
+</Style>
+<StyleMap id="track_begin">
+<Pair>
+<key>normal</key>
+<styleUrl>#track_begin_n</styleUrl>
+</Pair>
+<Pair>
+<key>highlight</key>
+<styleUrl>#track_begin_h</styleUrl>
+</Pair>
+</StyleMap>
+<Style id="track_end_n">
+<IconStyle>
+<scale>0.8</scale>
+<Icon>
+<href>files/track_end.png</href>
+</Icon>
+<hotSpot x=".5" y="0" xunits="fraction" yunits="fraction" />
+</IconStyle>
+</Style>
+<Style id="track_end_h">
+<IconStyle>
+<Icon>
+<href>files/track_end.png</href>
+</Icon>
+<hotSpot x=".5" y="0" xunits="fraction" yunits="fraction" />
+</IconStyle>
+</Style>
+<StyleMap id="track_end">
+<Pair>
+<key>normal</key>
+<styleUrl>#track_end_n</styleUrl>
+</Pair>
+<Pair>
+<key>highlight</key>
+<styleUrl>#track_end_h</styleUrl>
+</Pair>
+</StyleMap>
+<Style id="trackpoint_n">
+<IconStyle>
+<scale>0.25</scale>
+<Icon>
+<href>files/trackpoint_c.png</href>
+</Icon>
+<hotSpot x=".5" y=".5" xunits="fraction" yunits="fraction" />
+</IconStyle>
+<LabelStyle>
+<scale>0</scale>
+</LabelStyle>
+</Style>
+<Style id="trackpoint_h">
+<IconStyle>
+<scale>0.5</scale>
+<Icon>
+<href>files/trackpoint_c.png</href>
+</Icon>
+<hotSpot x=".5" y=".5" xunits="fraction" yunits="fraction" />
+</IconStyle>
+</Style>
+<StyleMap id="trackpoint">
+<Pair>
+<key>normal</key>
+<styleUrl>#trackpoint_n</styleUrl>
+</Pair>
+<Pair>
+<key>highlight</key>
+<styleUrl>#trackpoint_h</styleUrl>
+</Pair>
+</StyleMap>
+<Folder><name>Waypoints</name><Placemark>
+<name>超大深潭</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;Longitude: 120.88197&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 23.784158&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time: 2024-01-01T05:50:36Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2024-01-01T05:50:36Z</when>
+</TimeStamp>
+<styleUrl>#waypoint</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>120.88197,23.784158</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>舊部落</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.073628&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.214653&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time: 2024-01-05T12:27:13Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2024-01-05T12:27:13Z</when>
+</TimeStamp>
+<styleUrl>#waypoint</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.073628,24.214653</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>舊部落</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.091381&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.201366&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time: 2024-01-05T12:28:20Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2024-01-05T12:28:20Z</when>
+</TimeStamp>
+<styleUrl>#waypoint</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.091381,24.201366</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>百年水車 不錯</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.048609&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.694528&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time: 2024-08-31T07:45:10Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2024-08-31T07:45:10Z</when>
+</TimeStamp>
+<styleUrl>#waypoint</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.048609,24.694528</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>豆腐岩 取水</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;Longitude: 120.989187&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.517718&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time: 2025-11-08T01:54:29Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-08T01:54:29Z</when>
+</TimeStamp>
+<styleUrl>#waypoint</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>120.989187,24.517718</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>柳杉林</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;Longitude: 120.983603&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.504399&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time: 2025-11-08T06:26:24Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-08T06:26:24Z</when>
+</TimeStamp>
+<styleUrl>#waypoint</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>120.983603,24.504399</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>木造建築</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="4" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_090354_copied.jpg" width="512px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.09316&lt;/td&gt;&lt;td&gt;Latitude: 24.557645&lt;/td&gt;&lt;td&gt;Altitude: 1,191.4 M&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T01:03:41Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T01:03:41Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.09316,24.557645,1191.4</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>寬大平台 像林道三岔路</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_091351_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.092518&lt;/td&gt;&lt;td&gt;Altitude: 1,198.6 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.557439&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T01:13:33Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T01:13:33Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.092518,24.557439,1198.6</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>第一上切點</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_093305_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.093685&lt;/td&gt;&lt;td&gt;Altitude: 1,191.3 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.557274&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T01:32:53Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T01:32:53Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.093685,24.557274,1191.3</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>雙層水泥 像索道頭</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_094049_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.092656&lt;/td&gt;&lt;td&gt;Altitude: 1,194.8 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.557483&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T01:40:24Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T01:40:24Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.092656,24.557483,1194.8</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>超大寬稜 有類似梯田的駁坎</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="4" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_094759_copied.jpg" width="512px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.09159&lt;/td&gt;&lt;td&gt;Latitude: 24.556883&lt;/td&gt;&lt;td&gt;Altitude: 1,217 M&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T01:47:32Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T01:47:32Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.09159,24.556883,1217</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>稜線另一側超平</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_095020_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.091327&lt;/td&gt;&lt;td&gt;Altitude: 1,222.3 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.556828&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T01:50:00Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T01:50:00Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.091327,24.556828,1222.3</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>叉路 有些許垃圾</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_101942_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_102025_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.092883&lt;/td&gt;&lt;td&gt;Altitude: 1,285.4 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.556036&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T02:19:32Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T02:19:32Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.092883,24.556036,1285.4</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>1338</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_103320_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.093398&lt;/td&gt;&lt;td&gt;Altitude: 1,344.3 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.554511&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T02:33:06Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T02:33:06Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.093398,24.554511,1344.3</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>向東緩下</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_103619_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.093535&lt;/td&gt;&lt;td&gt;Altitude: 1,340.4 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.554507&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T02:36:10Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T02:36:10Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.093535,24.554507,1340.4</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>東北峰 有兩個山字基石 東邊超抖 向北繞一下就有好走的路</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_103857_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.094081&lt;/td&gt;&lt;td&gt;Altitude: 1,332.7 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.55462&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T02:38:28Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T02:38:28Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.094081,24.55462,1332.7</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>下至一段石頭平緩稜線</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_104242_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.09453&lt;/td&gt;&lt;td&gt;Altitude: 1,311.9 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.554629&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T02:42:27Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T02:42:27Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.09453,24.554629,1311.9</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>東南向出現斷崖 轉東北稜</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_104407_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.094713&lt;/td&gt;&lt;td&gt;Altitude: 1,308.6 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.554612&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T02:43:49Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T02:43:49Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.094713,24.554612,1308.6</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>東北向種樹路</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_104903_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.095243&lt;/td&gt;&lt;td&gt;Altitude: 1,282.6 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.5552&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T02:48:50Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T02:48:50Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.095243,24.5552,1282.6</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>鐵皮工寮</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_105848_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.095936&lt;/td&gt;&lt;td&gt;Altitude: 1,229 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.556511&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T02:58:39Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T02:58:39Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.095936,24.556511,1229</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>工寮後 右側有石頭山壁的稜線</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_110717_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.096094&lt;/td&gt;&lt;td&gt;Altitude: 1,209.5 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.55685&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T03:06:57Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T03:06:57Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.096094,24.55685,1209.5</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>下到林道 有路牌 基本上沿著衫林緩下</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_110925_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.096228&lt;/td&gt;&lt;td&gt;Altitude: 1,201.3 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.556924&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T03:08:30Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T03:08:30Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.096228,24.556924,1201.3</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>電線桿</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_111052_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.096388&lt;/td&gt;&lt;td&gt;Altitude: 1,199.4 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.556908&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T03:10:48Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T03:10:48Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.096388,24.556908,1199.4</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>電線桿</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_111915_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.096784&lt;/td&gt;&lt;td&gt;Altitude: 1,202.5 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.55635&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T03:19:08Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T03:19:08Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.096784,24.55635,1202.5</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>電線桿</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_112236_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.09696&lt;/td&gt;&lt;td&gt;Altitude: 1,197.5 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.556109&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T03:22:31Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T03:22:31Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.09696,24.556109,1197.5</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>電線桿</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_122446_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.096937&lt;/td&gt;&lt;td&gt;Altitude: 1,205.4 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.554895&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T04:24:41Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T04:24:41Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.096937,24.554895,1205.4</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>三角電線</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_122833_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.096526&lt;/td&gt;&lt;td&gt;Altitude: 1,204.4 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.55441&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T04:28:24Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T04:28:24Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.096526,24.55441,1204.4</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>V型崩塌</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_122919_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.096452&lt;/td&gt;&lt;td&gt;Altitude: 1,209 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.554384&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T04:29:03Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T04:29:03Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.096452,24.554384,1209</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>電線桿</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_123724_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.096139&lt;/td&gt;&lt;td&gt;Altitude: 1,215.5 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.554313&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T04:37:18Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T04:37:18Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.096139,24.554313,1215.5</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>完全找不到來的時候的林道 但一直走在古時候的林道的感覺</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_133001_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.094291&lt;/td&gt;&lt;td&gt;Altitude: 1,193.7 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.556694&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T05:29:21Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T05:29:21Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.094291,24.556694,1193.7</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>接回來時路</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_133259_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.094053&lt;/td&gt;&lt;td&gt;Altitude: 1,189.7 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.556795&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T05:32:50Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T05:32:50Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.094053,24.556795,1189.7</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>行車終點 往上是去登山口 有水</name>
+<description>
+
+&lt;table&gt;&lt;tr&gt;&lt;td colspan="2" align="center"&gt;&lt;img src="2025-11-22_腦寮林道前段探勘/20251122_141711_copied.jpg" width="384px"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Longitude: 121.095629&lt;/td&gt;&lt;td&gt;Altitude: 975.3 M&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Latitude: 24.559665&lt;/td&gt;&lt;td&gt;Time: 2025-11-22T06:16:44Z&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+</description>
+<TimeStamp>
+<when>2025-11-22T06:16:44Z</when>
+</TimeStamp>
+<styleUrl>#waypoint_i</styleUrl>
+<Point>
+<altitudeMode>clampToGround</altitudeMode>
+<coordinates>121.095629,24.559665,975.3</coordinates>
+</Point>
+</Placemark>
+</Folder></Document></kml>
