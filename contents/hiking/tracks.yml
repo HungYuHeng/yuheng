@@ -70,7 +70,3 @@ tracks:
     file: static/assets/gps/2023-04-03_最低鞍古道至根本.kml
     date: '2023-04-03'
     color: '#e74c3c'
-  - name: 2025-11-22 腦寮林道前段探勘
-    file: static/assets/gps/2025-11-22_腦寮林道前段探勘.kml
-    date: '2023-10-26'
-    color: '#e74c3c'
