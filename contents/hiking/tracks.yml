@@ -70,11 +70,19 @@ tracks:
     file: static/assets/gps/2023-04-03_最低鞍古道至根本.kml
     date: '2023-04-03'
     color: '#e74c3c'
-  - name: 2025-11-22 根本古道
-    file: static/assets/gps/2025-11-22_根本古道.kml
-    date: '2025-11-22'
+  - name: 2023-11-26 根本古道
+    file: static/assets/gps/2023-11-26_根本古道.kml
+    date: '2023-11-26'
     color: '#e74c3c'
   - name: 2025-11-22 腦寮林道前段探勘
     file: static/assets/gps/2025-11-22_腦寮林道前段探勘.kml
-    date: '2024-01-01'
+    date: '2025-11-22'
+    color: '#e74c3c'
+  - name: 2026-06-19 東埔大水窟Day1-2
+    file: static/assets/gps/2026-06-19東埔大水窟Day1-2.kml
+    date: '2026-06-19'
+    color: '#e74c3c'
+  - name: 2026-06-21 東埔大水窟Day3-4
+    file: static/assets/gps/2026-06-21東埔大水窟Day3-4.kml
+    date: '2026-06-21'
     color: '#e74c3c'

@@ -4,7 +4,7 @@
 （hiking.html 上傳至 GitHub 時會在瀏覽器自動執行相同流程；此腳本供本機批次處理用）
 
 用法：
-  python scripts/extract_kmz_images.py static/assets/gps/北坑溪古道.kmz
+  python scripts/extract_kmz_images.py static/assets/gps/2026-06-19東埔大水窟Day1-2.kmz
 
 產出：
   static/assets/gps/北坑溪古道/          ← 圖片資料夾
