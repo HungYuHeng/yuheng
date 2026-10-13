@@ -86,3 +86,7 @@ tracks:
     file: static/assets/gps/2026-06-21東埔大水窟Day3-4.kml
     date: '2026-06-21'
     color: '#e74c3c'
+  - name: 2026-07-31 雪山西稜
+    file: static/assets/gps/2026-07-31_雪山西稜.kml
+    date: '2026-07-31'
+    color: '#e74c3c'
