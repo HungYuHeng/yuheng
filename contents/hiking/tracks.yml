@@ -90,3 +90,7 @@ tracks:
     file: static/assets/gps/2026-07-31_雪山西稜.kml
     date: '2026-07-31'
     color: '#e74c3c'
+  - name: 2026-10-09 死亡稜線
+    file: static/assets/gps/2026-10-09_死亡稜線.kml
+    date: '2026-10-09'
+    color: '#e74c3c'
